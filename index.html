@@ -3,12 +3,13 @@
 <head>
     <meta charset ="uft-8">
     <meta name = "viewport" content = "width = device-width, initial-scale=1">
-    <tite>COMP 397 - Week 2</tite>
+    <tite></tite>
     <!-- CSS Section -->
+    <link rel="stylesheet" href="Content/reset.css">
     <link rel="stylesheet" href="Content/game.css">
 </head>
-<body>
-    <div id="game">
+<body onload="init()">
+    <div class="game">
         <canvas id="canvas" width="640" height="480"></canvas>
     </div>
     <!-- JavaScript Libraries -->
@@ -18,6 +19,7 @@
     <script src="Scripts/lib/tweenjs-0.6.2.min.js"></script>
 
     <!--Game Scripts-->
+    <script src="Scripts/objects/label.js"></script>
     <script src="Scripts/core/game.js"></script>
 </body>
 </html>
