@@ -1,3 +1,8 @@
+/*
+    Scene  module to group all user-defined scenes  under the same "namespace aka module"
+    Game scene that contains all assets and functionality associated with the game itself
+*/
+
 module scenes {
     export class Game extends objects.Scene {
 

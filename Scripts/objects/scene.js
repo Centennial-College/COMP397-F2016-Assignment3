@@ -1,3 +1,7 @@
+/*
+    Object module to group all user-defined objects under the same "namespace aka module"
+    Scene class extends a container object used to store object associated with a particular scene.
+*/
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -11,6 +15,7 @@ var objects;
             _super.call(this);
             this.start();
         }
+        // When this object starts, add it to the current global stage container.
         Scene.prototype.start = function () {
             stage.addChild(this);
         };

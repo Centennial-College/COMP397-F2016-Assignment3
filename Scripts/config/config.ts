@@ -1,3 +1,6 @@
+/*
+    Module to store globally accessible values and states for the game.
+*/
 module config {
     export class Scene {
         public static MENU : number = 0;

@@ -1,3 +1,7 @@
+/*
+    Scene  module to group all user-defined scenes  under the same "namespace aka module"
+    Game scene that contains all assets and functionality associated with the game itself
+*/
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }

@@ -1,3 +1,6 @@
+/*
+    Module to store globally accessible values and states for the game.
+*/
 var config;
 (function (config) {
     var Scene = (function () {
