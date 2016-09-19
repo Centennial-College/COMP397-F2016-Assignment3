@@ -4,7 +4,7 @@ module objects {
         height : number;
 
         constructor(pathString: string, x:number, y:number) {
-            super(pathString);
+            super(assets.getResult(pathString));
             this.x = x;
             this.y = y;
 

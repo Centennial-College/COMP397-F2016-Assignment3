@@ -8,7 +8,7 @@ var objects;
     var Button = (function (_super) {
         __extends(Button, _super);
         function Button(pathString, x, y) {
-            _super.call(this, pathString);
+            _super.call(this, assets.getResult(pathString));
             this.x = x;
             this.y = y;
             this.width = 150;
