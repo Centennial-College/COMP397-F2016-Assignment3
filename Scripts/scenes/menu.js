@@ -12,12 +12,11 @@ var scenes;
         }
         Menu.prototype.start = function () {
             console.log("Menu Scene Started");
-            // Add label to scene
-            // menuLabel = new objects.Label("Pong HD Remix: The Movie The Game", "Arial 16px", "#000000", )
             // Add button to scene
-            this._menuButton = new objects.Button("Start", config.Screen.CENTER_X, config.Screen.CENTER_Y);
+            this._menuButton = new objects.Button("Start", config.Screen.CENTER_X, config.Screen.CENTER_Y + 180);
             this.addChild(this._menuButton);
             this._menuButton.on("click", this._startButtonClick, this);
+            stage.addChild(this);
         };
         Menu.prototype.update = function () {
         };

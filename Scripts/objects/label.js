@@ -9,6 +9,8 @@ var objects;
         __extends(Label, _super);
         function Label(labelString, labelFont, labelColor, x, y) {
             _super.call(this, labelString, labelFont, labelColor);
+            this.regX = this.getBounds().width * 0.5;
+            this.regY = this.getBounds().height * 0.5;
             this.x = x;
             this.y = y;
         }

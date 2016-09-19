@@ -8,15 +8,18 @@ var stage: createjs.Stage;
 var currentScene : objects.Scene;
 var scene: number;
 
+// Game scenes
 var menuScene : scenes.Menu;
+var gameScene : scenes.Game;
 
+// Preload Assets required
 var assetData:objects.Asset[] = [
     {id: "Start", src:"../../Assets/images/Start.png"}, 
-    {id: "Back", src:"../../Assets/images/Back.png"}, 
-]
+    {id: "Back", src:"../../Assets/images/Back.png"}
+];
 
 function preload() {
-    assets = new createjs.LoadQueue();
+    assets = new createjs.LoadQueue(false);
     // assets.installPlugin(createjs.Sound);
     assets.on("complete", init, this);
     assets.loadManifest(assetData);
@@ -28,13 +31,14 @@ function init() {
 
     stage.enableMouseOver(20);
     createjs.Ticker.setFPS(config.Game.FPS);
-    createjs.Ticker.on("tick", gameLoop, this);
+    createjs.Ticker.on("tick", this.gameLoop, this);
 
     scene = config.Scene.MENU;
     changeScene();
 }
 
 function gameLoop(event: createjs.Event): void {
+    console.log("gameLoop update");
     currentScene.update();
     stage.update();
 }
@@ -45,13 +49,15 @@ function changeScene() : void {
     {
         case config.Scene.MENU :
             stage.removeAllChildren();
-            currentScene = new scenes.Menu();
+            menuScene = new scenes.Menu();
+            currentScene = menuScene;
             console.log("Starting MENU scene");
-        break;
+            break;
         case config.Scene.GAME :
             stage.removeAllChildren();
-            // currentScene
-        break;
+            currentScene = new scenes.Game();
+            console.log("Starting GAME scene");
+            break;
     }
     
 }
