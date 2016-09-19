@@ -21,6 +21,8 @@ module scenes {
             this._menuButton = new objects.Button("Start", config.Screen.CENTER_X, config.Screen.CENTER_Y);
             this.addChild(this._menuButton);
             this._menuButton.on("click", this._startButtonClick, this);
+
+            stage.addChild(this);
         }
 
         public update() : void {
