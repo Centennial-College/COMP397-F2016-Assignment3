@@ -1,3 +1,12 @@
+/**
+ * @file game.ts
+ * @author Kevin Ma kma45@my.centennialcollege.ca
+ * @studentID 300867968
+ * @date: September 20, 2016
+ * @description: This file is the entry point for the game.
+ * @version 0.1.0
+ */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /// <reference path = "_reference.ts" />
 // Global Variables
 var assets;
@@ -57,4 +66,5 @@ function changeScene() {
             break;
     }
 }
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */ 
 //# sourceMappingURL=game.js.map
