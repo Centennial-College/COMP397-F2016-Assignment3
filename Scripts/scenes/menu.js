@@ -21,6 +21,15 @@ var scenes;
             _super.call(this);
         }
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++
+        /**
+          * This method runs when the scene is started
+          *
+          * @public
+          * @method start
+          *
+          * @memberOf Menu
+          * @return {void}
+          */
         Menu.prototype.start = function () {
             console.log("Menu Scene Started");
             this._menuLabel = new objects.Label("Welcome to Menu Scene", "40px Arial", "#00008b", config.Screen.CENTER_X, config.Screen.CENTER_Y);
@@ -35,15 +44,43 @@ var scenes;
             // Add menu scene to global stage container
             stage.addChild(this);
         };
+        /**
+         * This method runs when the Menu Scene updates
+         *
+         * @public
+         * @method update
+         *
+         * @memberOf Menu
+         * @return {void}
+         */
         Menu.prototype.update = function () {
         };
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++
-        // Fucntion for when button is pressed
+        /**
+         * This method changes the current scene to the game scene when the start button is clicked
+         *
+         * @private
+         * @method _startButtonClick
+         * @param {createjs.MouseEvent} event
+         *
+         * @memberOf Menu
+         * @return {void}
+         */
         Menu.prototype._startButtonClick = function (event) {
             // Change global scene variable to GAME. Call global changeScene() function
             scene = config.Scene.GAME;
             changeScene();
         };
+        /**
+         * This method changes the current scene to the gameover scene when the gameover button is clicked
+         *
+         * @private
+         * @method _gameOverButtonClick
+         * @param {createjs.MouseEvent} event
+         *
+         * @memberOf Menu
+         * @return {void}
+         */
         Menu.prototype._gameOverButtonClick = function (event) {
             scene = config.Scene.GAMEOVER;
             changeScene();
