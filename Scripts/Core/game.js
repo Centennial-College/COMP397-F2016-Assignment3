@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 13 2016
  * @description: This file is the entry point for the game.
- * @version 0.1.0
+ * @version 0.2.0
  */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /// <reference path = "_reference.ts" />
@@ -17,7 +17,8 @@ var scene;
 // Preload Assets required
 var assetData = [
     { id: "playgame", src: "../../Assets/images/playgame.png" },
-    { id: "instructions", src: "../../Assets/images/instructions.png" }
+    { id: "instructions", src: "../../Assets/images/instructions.png" },
+    { id: "ocean", src: "../../Assets/images/bg.gif" }
 ];
 /**
  * This method is used to preload all the assets required for the game

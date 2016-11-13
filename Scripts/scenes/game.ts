@@ -1,10 +1,10 @@
 /**
  * @file game.ts
- * @author Kevin Ma kma45@my.centennialcollege.ca
+ * @author Kevin Ma 
  * @studentID 300867968
- * @date: September 23, 2016
+ * @date: Nov 13 2016
  * @description: Game scene that contains all assets and functionality associated with the game itself
- * @version 0.1.0
+ * @version 0.2.0
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -13,8 +13,7 @@ module scenes {
     export class Game extends objects.Scene {
 
         // PRIVATE VARIABLES +++++++++++++++++++++++++++++++++++++++++++++++++
-        private _gameLabel: objects.Label;
-        private _gameButton: objects.Button;
+        private _ocean: objects.Ocean;
 
         // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
@@ -35,14 +34,9 @@ module scenes {
             // Add objects to the scene
             console.log("Game scene started");
 
-            // Create Label for scene and add to Game Scene container
-            this._gameLabel = new objects.Label("PLAY SCENE", "60px Consolar", "#000000", config.Screen.CENTER_X, config.Screen.CENTER_Y);
-            this.addChild(this._gameLabel);
-
-            // Create button for scene and add to Game Scene container. Register for onclick event
-            this._gameButton = new objects.Button("Back", config.Screen.CENTER_X, config.Screen.CENTER_Y + 180);
-            this.addChild(this._gameButton);
-            this._gameButton.on("click", this._onBackButtonClick, this);
+            // ocean object
+            this._ocean = new objects.Ocean("ocean");
+            this.addChild(this._ocean);
 
             // Add gamescene to main stage container. 
             stage.addChild(this);
@@ -59,23 +53,11 @@ module scenes {
          */
         public update(): void {
             // Update objects
+            this._ocean.update()
         }
 
 
         // PRIVATE FUNCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++
-        /**
-         * This function changes the game to the menu scene
-         * 
-         * @private
-         * @method _onBackButtonClick
-         * @param {createjs.MouseEvent} event
-         * 
-         * @memberOf Game
-         */
-        private _onBackButtonClick(event: createjs.MouseEvent) {
-            // Set global variable to Menu Scene and call changescene function
-            scene = config.Scene.MENU;
-            changeScene();
-        }
+
     }
 }
