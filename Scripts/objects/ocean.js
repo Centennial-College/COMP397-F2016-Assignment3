@@ -4,7 +4,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /**
- * @file game.ts
+ * @file ocean.ts
  * @author Kevin Ma
  * @studentID 300867968
  * @date: Nov 13 2016

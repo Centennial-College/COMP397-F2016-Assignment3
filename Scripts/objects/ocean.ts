@@ -1,5 +1,5 @@
 /**
- * @file game.ts
+ * @file ocean.ts
  * @author Kevin Ma 
  * @studentID 300867968
  * @date: Nov 13 2016
