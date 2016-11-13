@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 13 2016
  * @description: This file contains all assets and functionality associated with the menu itself.
- * @version 0.1.0
+ * @version 0.3.2 added scrolling ocean bg to menu scene
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -17,6 +17,7 @@ module scenes {
         private _instructionsBtn: objects.Button;
         private _titleLabel: objects.Label;
         private _subtitleLabel: objects.Label
+        private _ocean: objects.Ocean;
 
         // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
@@ -35,6 +36,10 @@ module scenes {
           */
         public start(): void {
             console.log("Menu Scene Started");
+
+            // ocean object
+            this._ocean = new objects.Ocean("ocean", 1);
+            this.addChild(this._ocean);
 
             this._titleLabel = new objects.Label("12 Parsecs Delivery", "40px custfont", "#00008b", config.Screen.CENTER_X, config.Screen.CENTER_Y);
             this.addChild(this._titleLabel);
@@ -65,7 +70,7 @@ module scenes {
          * @return {void}
          */
         public update(): void {
-
+            this._ocean.update()
         }
 
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -85,7 +90,7 @@ module scenes {
             changeScene();
         }
 
-         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++
         /**
          * This method changes the current scene to the instructions scene when the start button is clicked
          * 

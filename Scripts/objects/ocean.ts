@@ -18,8 +18,17 @@ module objects {
          * @constructor
          * @param {string} imageString
          */
-        constructor(imageString: string) {
+        /**
+         * Creates an instance of Ocean.
+         * 
+         * @param {string} imageString
+         * @param {number} [scrollSpeed=5]  default of 5px per frame  down
+         * 
+         * @memberOf Ocean
+         */
+        constructor(imageString: string, scrollSpeed: number = 5) {
             super(assets.getResult(imageString));
+            this._dy = scrollSpeed
 
             this.start();
         }
@@ -61,7 +70,6 @@ module objects {
          */
         public start(): void {
             this._reset();
-            this._dy = 5; // 5px per frame down
         }
 
         /**

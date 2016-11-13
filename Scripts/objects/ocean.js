@@ -22,8 +22,18 @@ var objects;
          * @constructor
          * @param {string} imageString
          */
-        function Ocean(imageString) {
+        /**
+         * Creates an instance of Ocean.
+         *
+         * @param {string} imageString
+         * @param {number} [scrollSpeed=5]  default of 5px per frame  down
+         *
+         * @memberOf Ocean
+         */
+        function Ocean(imageString, scrollSpeed) {
+            if (scrollSpeed === void 0) { scrollSpeed = 5; }
             _super.call(this, assets.getResult(imageString));
+            this._dy = scrollSpeed;
             this.start();
         }
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++
@@ -60,7 +70,6 @@ var objects;
          */
         Ocean.prototype.start = function () {
             this._reset();
-            this._dy = 5; // 5px per frame down
         };
         /**
          * This method updates the object's properties

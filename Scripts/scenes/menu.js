@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 13 2016
  * @description: This file contains all assets and functionality associated with the menu itself.
- * @version 0.1.0
+ * @version 0.3.2 added scrolling ocean bg to menu scene
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -32,6 +32,9 @@ var scenes;
           */
         Menu.prototype.start = function () {
             console.log("Menu Scene Started");
+            // ocean object
+            this._ocean = new objects.Ocean("ocean", 1);
+            this.addChild(this._ocean);
             this._titleLabel = new objects.Label("12 Parsecs Delivery", "40px custfont", "#00008b", config.Screen.CENTER_X, config.Screen.CENTER_Y);
             this.addChild(this._titleLabel);
             this._subtitleLabel = new objects.Label("Air Express!", "20px custfont", "00008b", config.Screen.CENTER_X + 100, config.Screen.CENTER_Y + 50);
@@ -56,6 +59,7 @@ var scenes;
          * @return {void}
          */
         Menu.prototype.update = function () {
+            this._ocean.update();
         };
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++
         /**
