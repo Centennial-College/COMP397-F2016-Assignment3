@@ -1,29 +1,30 @@
 /**
  * @file game.css
- * @author Kevin Ma kma45@my.centennialcollge.ca
+ * @author Kevin Ma 
  * @studentID 300867968
- * @date September 23, 2016
+ * @date Nov 13 2016
  * @description This file is the main styling sheet for the game
  * @version 0.1.0
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+@font-face {
+    font-family: custfont;
+    src: url(../Assets/fonts/Dock51.ttf);
+}
 
 body {
     background-color: darkgrey;
-}
-
-.game {
-    width : 80%;
-    margin: 0 auto;
 }
 
 canvas {
     border: 1px solid black;
     border-radius: 10px;
     text-align: center;
-    background-color: white;
-    margin-left: 10%;
+    background-color: aliceblue;
+    margin-top: 10vh;
+    /*width: 100vw;
+    height: 100vh;*/
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */

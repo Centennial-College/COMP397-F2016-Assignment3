@@ -1,8 +1,8 @@
 /**
  * @file game.ts
- * @author Kevin Ma kma45@my.centennialcollege.ca
+ * @author Kevin Ma
  * @studentID 300867968
- * @date: September 20, 2016
+ * @date: Nov 13 2016
  * @description: This file is the entry point for the game.
  * @version 0.1.0
  */
@@ -14,17 +14,10 @@ var canvas;
 var stage;
 var currentScene;
 var scene;
-// Game scenes
-var menuScene;
-var gameScene;
-var gameOverScene;
 // Preload Assets required
 var assetData = [
-    { id: "Start", src: "../../Assets/images/Start.png" },
-    { id: "Back", src: "../../Assets/images/Back.png" },
-    { id: "BG", src: "../../Assets/images/bg.png" },
-    { id: "GameOver", src: "../../Assets/images/gameover.png" },
-    { id: "Mario", src: "../../Assets/images/mario.png" }
+    { id: "playgame", src: "../../Assets/images/playgame.png" },
+    { id: "instructions", src: "../../Assets/images/instructions.png" }
 ];
 /**
  * This method is used to preload all the assets required for the game
@@ -86,8 +79,7 @@ function changeScene() {
     switch (scene) {
         case config.Scene.MENU:
             stage.removeAllChildren();
-            menuScene = new scenes.Menu();
-            currentScene = menuScene;
+            currentScene = new scenes.Menu();
             console.log("Starting MENU scene");
             break;
         case config.Scene.GAME:
