@@ -1,0 +1,36 @@
+{
+
+"images": [
+    "atlas.png"
+],
+
+"frames": [
+    [1, 1, 226, 178, 0, 0, 0],
+    [1, 181, 175, 59, 0, 0, 0],
+    [178, 181, 62, 62, 0, 0, 0],
+    [1, 242, 175, 59, 0, 0, 0],
+    [178, 245, 62, 51, 0, -3, -9],
+    [178, 298, 62, 51, 0, -3, -9],
+    [1, 303, 175, 59, 0, 0, 0],
+    [178, 351, 62, 51, 0, -3, -9],
+    [1, 364, 175, 59, 0, 0, 0]
+],
+
+"animations": {
+    "cloud": { "frames": [0] },
+    "gotomenu": { "frames": [1] },
+    "island": { "frames": [2] },
+    "instructions": { "frames": [3] },
+    "plane1": { "frames": [4] },
+    "plane2": { "frames": [5] },
+    "playagain": { "frames": [6] },
+    "plane3": { "frames": [7] },
+    "playgame": { "frames": [8] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:fc81c76f9517e79910ac1b365ed11855:79b618469f13f1e04becc60c07e48f7b:cbce6b53f0f49e0bf15173c25c41f876$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}

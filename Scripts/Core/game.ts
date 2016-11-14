@@ -2,9 +2,9 @@
  * @file game.ts
  * @author Kevin Ma
  * @studentID 300867968
- * @date: Nov 13 2016
+ * @date: Nov 14 2016
  * @description: This file is the entry point for the game.
- * @version 0.4.1 added boxblur filter to the ocean bg on title scene
+ * @version 0.4.2 added spritesheet to the core/game.ts 
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -19,11 +19,13 @@ let stage: createjs.Stage;
 let currentScene: objects.Scene;
 let scene: number;
 
+// declare textureAtlas
+let textureAtlas: createjs.SpriteSheet
+
 // Preload Assets required
 let assetData: objects.Asset[] = [
-    { id: "playgame", src: "../../Assets/images/playgame.png" },
-    { id: "instructions", src: "../../Assets/images/instructions.png" },
-    { id: "ocean", src: "../../Assets/images/bg.gif" }
+    { id: "ocean", src: "../../Assets/images/bg.gif" },
+    { id: "atlas", src: "../../Assets/images/atlas.png" }
 ];
 
 /**
@@ -56,12 +58,44 @@ function init(): void {
     // Tie canvas element to createjs stage container
     stage = new createjs.Stage(canvas);
 
-    // Enable mouse events; the frequency parameter indicates how many times per second EaselJS should calculate what is currently under the pointer. A higher number is more responsive, but also more computationally expensive. It defaults to 20 times per second. 
+    // Enable mouse events; the frequency parameter indicates how many times per second EaselJS should calculate what is currently under the pointer. 
+    // A higher number is more responsive, but also more computationally expensive. It defaults to 20 times per second. 
     stage.enableMouseOver(20);
 
     // Set FPS for game and register for "tick" callback function
     createjs.Ticker.framerate = config.Game.FPS;
     createjs.Ticker.on("tick", this.gameLoop, this);
+
+    textureAtlas = new createjs.SpriteSheet({
+        "images": [
+            assets.getResult('atlas')
+        ],
+
+        "frames": [
+            [1, 1, 226, 178, 0, 0, 0],
+            [1, 181, 175, 59, 0, 0, 0],
+            [178, 181, 62, 62, 0, 0, 0],
+            [1, 242, 175, 59, 0, 0, 0],
+            [178, 245, 62, 51, 0, -3, -9],
+            [178, 298, 62, 51, 0, -3, -9],
+            [1, 303, 175, 59, 0, 0, 0],
+            [178, 351, 62, 51, 0, -3, -9],
+            [1, 364, 175, 59, 0, 0, 0]
+        ],
+
+        "animations": {
+            "cloud": { "frames": [0] },
+            "gotomenu": { "frames": [1] },
+            "island": { "frames": [2] },
+            "instructions": { "frames": [3] },
+            "plane": {
+                "frames": [4, 5, 7],
+                "speed": 0.5
+            },
+            "playagain": { "frames": [6] },
+            "playgame": { "frames": [8] }
+        }
+    })
 
     // Set initial scene to MENU scene and call changeScene().
     scene = config.Scene.MENU;
