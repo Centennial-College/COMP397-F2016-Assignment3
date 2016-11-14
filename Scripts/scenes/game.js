@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 14 2016
  * @description: Game scene that contains all assets and functionality associated with the game itself
- * @version 0.5.0 added objects/gameobject, objects/vector2 and objects/island classes
+ * @version 0.6.0 added objects/player class
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -36,8 +36,12 @@ var scenes;
             // ocean object
             this._ocean = new objects.Ocean("ocean");
             this.addChild(this._ocean);
+            // island object
             this._island = new objects.Island("island");
             this.addChild(this._island);
+            // player object 
+            this._player = new objects.Player("plane");
+            this.addChild(this._player);
             // Add gamescene to main stage container. 
             stage.addChild(this);
         };
@@ -54,6 +58,7 @@ var scenes;
             // Update objects
             this._ocean.update();
             this._island.update();
+            this._player.update();
         };
         return Game;
     }(objects.Scene));
