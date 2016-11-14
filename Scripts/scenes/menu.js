@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 13 2016
  * @description: This file contains all assets and functionality associated with the menu itself.
- * @version 0.4.0 added animations to title scene
+ * @version 0.4.1 added boxblur filter to the ocean bg on title scene
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -34,6 +34,11 @@ var scenes;
             console.log("Menu Scene Started");
             // ocean object
             this._ocean = new objects.Ocean("ocean", 1);
+            // 5x5 Box Blur filter on bg image
+            var blurFilter = new createjs.BlurFilter(5, 5);
+            this._ocean.filters = [blurFilter];
+            var bitmapBounds = this._ocean.getBounds();
+            this._ocean.cache(bitmapBounds.x, bitmapBounds.y, bitmapBounds.width, bitmapBounds.height);
             this.addChild(this._ocean);
             this._titleLabel = new objects.Label("12 Parsecs Delivery", "50px custfont", "#fff", -5000, config.Screen.CENTER_Y);
             // this._titleLabel = new objects.Label("12 Parsecs Delivery", "50px custfont", "#fff", config.Screen.CENTER_X, config.Screen.CENTER_Y);

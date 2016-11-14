@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 13 2016
  * @description: This file is the entry point for the game.
- * @version 0.2.0
+ * @version 0.4.1 added boxblur filter to the ocean bg on title scene
  */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /// <reference path = "_reference.ts" />
@@ -64,7 +64,6 @@ function init() {
  */
 function gameLoop(event) {
     // Update whatever scene is currently active.
-    console.log("gameLoop update");
     currentScene.update();
     stage.update();
 }
