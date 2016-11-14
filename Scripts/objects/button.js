@@ -1,10 +1,10 @@
 /**
  * @file button.ts
- * @author Kevin Ma kma45@my.centennialcollege.ca
+ * @author Kevin Ma
  * @studentID 300867968
- * @date: September 20, 2016
+ * @date: Nov 14 2016
  * @description: Button class extends the createjs bitmap class and provides a clean interface for creating clickable objects
- * @version 0.1.0
+ * @version 0.4.3 reworked button class to extend from createjs.Sprite
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -17,8 +17,8 @@ var objects;
     var Button = (function (_super) {
         __extends(Button, _super);
         // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        function Button(pathString, x, y) {
-            _super.call(this, assets.getResult(pathString));
+        function Button(imageString, x, y) {
+            _super.call(this, textureAtlas, imageString);
             // Set the position of the button
             this.x = x;
             this.y = y;
@@ -60,7 +60,7 @@ var objects;
             event.currentTarget.alpha = 1.0;
         };
         return Button;
-    }(createjs.Bitmap));
+    }(createjs.Sprite));
     objects.Button = Button;
 })(objects || (objects = {}));
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */ 

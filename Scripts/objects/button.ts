@@ -1,24 +1,24 @@
 /**
  * @file button.ts
- * @author Kevin Ma kma45@my.centennialcollege.ca
+ * @author Kevin Ma
  * @studentID 300867968
- * @date: September 20, 2016
+ * @date: Nov 14 2016
  * @description: Button class extends the createjs bitmap class and provides a clean interface for creating clickable objects
- * @version 0.1.0
+ * @version 0.4.3 reworked button class to extend from createjs.Sprite
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 module objects {
-    export class Button extends createjs.Bitmap {
+    export class Button extends createjs.Sprite {
 
         // PRIVATE INSTANCE VARIABLES +++++++++++++++++++++++++++++++++++++++++
         width: number;
         height: number;
 
         // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        constructor(pathString: string, x: number, y: number) {
-            super(assets.getResult(pathString));
+        constructor(imageString: string, x: number, y: number) {
+            super(textureAtlas, imageString);
             // Set the position of the button
             this.x = x;
             this.y = y;
