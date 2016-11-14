@@ -7,9 +7,9 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @file vector2.ts
  * @author Kevin Ma
  * @studentID 300867968
- * @date: Nov 13 2016
+ * @date: Nov 14 2016
  * @description: This class extends the CreateJS Point class
- * @version 0.3.0
+ * @version 0.5.0 added objects/gameobject, objects/vector2 and objects/island classes
  */
 var objects;
 (function (objects) {

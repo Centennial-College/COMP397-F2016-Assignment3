@@ -2,9 +2,9 @@
  * @file game.ts
  * @author Kevin Ma
  * @studentID 300867968
- * @date: Nov 13 2016
+ * @date: Nov 14 2016
  * @description: Game scene that contains all assets and functionality associated with the game itself
- * @version 0.2.0
+ * @version 0.5.0 added objects/gameobject, objects/vector2 and objects/island classes
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -36,6 +36,8 @@ var scenes;
             // ocean object
             this._ocean = new objects.Ocean("ocean");
             this.addChild(this._ocean);
+            this._island = new objects.Island("island");
+            this.addChild(this._island);
             // Add gamescene to main stage container. 
             stage.addChild(this);
         };
@@ -51,6 +53,7 @@ var scenes;
         Game.prototype.update = function () {
             // Update objects
             this._ocean.update();
+            this._island.update();
         };
         return Game;
     }(objects.Scene));

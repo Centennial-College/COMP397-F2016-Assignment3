@@ -2,9 +2,9 @@
  * @file gameobject.ts
  * @author Kevin Ma 
  * @studentID 300867968
- * @date: Nov 13 2016
+ * @date: Nov 14 2016
  * @description: This class represents a generic Game Object used in the game
- * @version 0.3.0
+ * @version 0.5.0 added objects/gameobject, objects/vector2 and objects/island classes
  */
 module objects {
     export abstract class GameObject extends createjs.Sprite {
@@ -73,7 +73,7 @@ module objects {
          * @constructor
          * @param {string} imageString
          */
-        constructor(atlas: createjs.SpriteSheet, imageString: string, public deathAnimString: string) {
+        constructor(atlas: createjs.SpriteSheet, imageString: string, public deathAnimString?: string) {
             super(atlas, imageString);
 
             this._initialize(imageString);
