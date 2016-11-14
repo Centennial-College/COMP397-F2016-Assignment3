@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 14 2016
  * @description: This file is the entry point for the game.
- * @version 0.4.2 added spritesheet to the core/game.ts
+ * @version 0.6.1 implemented gliding delay when moving player.ts to be more realistic
  */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /// <reference path = "_reference.ts" />
@@ -82,7 +82,7 @@ function init() {
         }
     });
     // Set initial scene to MENU scene and call changeScene().
-    scene = config.Scene.MENU;
+    scene = config.Scene.GAME;
     changeScene();
 }
 /**

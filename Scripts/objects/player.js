@@ -9,13 +9,12 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @studentID 300867968
  * @date: Nov 14 2016
  * @description: This is the Player object used in the game
- * @version 0.6.0 added objects/player class
+ * @version 0.6.1 implemented gliding delay when moving player.ts to be more realistic
  */
 var objects;
 (function (objects) {
     var Player = (function (_super) {
         __extends(Player, _super);
-        // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++
         // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
@@ -26,6 +25,7 @@ var objects;
          */
         function Player(imageString) {
             _super.call(this, textureAtlas, imageString);
+            this.FRICTION = 0.5;
             this.start();
         }
         /**
@@ -56,7 +56,10 @@ var objects;
          * @returns {void}
          */
         Player.prototype.start = function () {
+            this._newPosition = new objects.Vector2(config.Screen.CENTER_X, 430);
+            this._dx = 0;
             this.y = 430;
+            this.x = config.Screen.CENTER_X;
         };
         /**
          * This method updates the object's properties
@@ -67,9 +70,31 @@ var objects;
          * @returns {void}
          */
         Player.prototype.update = function () {
+            var _this = this;
             // player to follow mouse
-            this.position = new objects.Vector2(this.x, this.y);
-            this.x = stage.mouseX;
+            // register the new position of the mouse when mouse moves 
+            stage.on("stagemousemove", function (evt) {
+                _this._newPosition.x = stage.mouseX;
+                // initial velocity of 5 in either direction towards the mouse position
+                // only start moving if mouse has left hitbox of the plane
+                if (Math.abs(_this._newPosition.x - _this.x) > _this.halfWidth)
+                    _this._dx = _this._newPosition.x > _this.x ? 5 : -5;
+            });
+            console.log('dx ' + this._dx);
+            // only move the plane if the plane's position differs from the mouse position
+            if (this._dx > 0 && this.x > this._newPosition.x ||
+                this._dx < 0 && this.x < this._newPosition.x) {
+                this._dx = 0;
+                this.x = this._newPosition.x;
+            }
+            console.log('this.position: ' + this.position);
+            console.log('this._newPosition: ' + this._newPosition);
+            console.log('this.y ' + this.y);
+            console.log('this.x ' + this.x);
+            // this.position.x += this._dx
+            this.x += this._dx;
+            // this.position = new Vector2(this.x, this.y);
+            // this.x = stage.mouseX;
             this._checkBounds();
         };
         return Player;

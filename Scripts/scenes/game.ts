@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 14 2016
  * @description: Game scene that contains all assets and functionality associated with the game itself
- * @version 0.6.0 added objects/player class
+ * @version 0.6.1 implemented gliding delay when moving player.ts to be more realistic
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -66,6 +66,7 @@ module scenes {
             this._ocean.update()
             this._island.update()
             this._player.update()
+           
         }
 
 

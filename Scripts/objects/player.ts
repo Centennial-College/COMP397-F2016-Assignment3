@@ -4,11 +4,14 @@
  * @studentID 300867968
  * @date: Nov 14 2016
  * @description: This is the Player object used in the game 
- * @version 0.6.0 added objects/player class
+ * @version 0.6.1 implemented gliding delay when moving player.ts to be more realistic
  */
 module objects {
     export class Player extends objects.GameObject {
         // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++
+        private _newPosition: objects.Vector2
+        private FRICTION: number = 0.5
+        private _dx: number
 
         // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++
 
@@ -57,7 +60,10 @@ module objects {
          * @returns {void}
          */
         public start(): void {
+            this._newPosition = new Vector2(config.Screen.CENTER_X, 430);
+            this._dx = 0
             this.y = 430;
+            this.x = config.Screen.CENTER_X
         }
 
         /**
@@ -70,8 +76,36 @@ module objects {
          */
         public update(): void {
             // player to follow mouse
-            this.position = new Vector2(this.x, this.y);
-            this.x = stage.mouseX;
+            // register the new position of the mouse when mouse moves 
+            stage.on("stagemousemove", (evt) => {
+                this._newPosition.x = stage.mouseX
+
+                // initial velocity of 5 in either direction towards the mouse position
+                // only start moving if mouse has left hitbox of the plane
+                if (Math.abs(this._newPosition.x - this.x) > this.halfWidth)
+                    this._dx = this._newPosition.x > this.x ? 5 : -5
+            })
+
+            console.log('dx ' + this._dx);
+
+            // only move the plane if the plane's position differs from the mouse position
+            if (this._dx > 0 && this.x > this._newPosition.x ||
+                this._dx < 0 && this.x < this._newPosition.x) {
+                this._dx = 0
+                this.x = this._newPosition.x
+            }
+
+            console.log('this.position: ' + this.position);
+            console.log('this._newPosition: ' + this._newPosition);
+            console.log('this.y ' + this.y);
+            console.log('this.x ' + this.x);
+
+            // this.position.x += this._dx
+            this.x += this._dx
+
+            // this.position = new Vector2(this.x, this.y);
+            // this.x = stage.mouseX;
+
             this._checkBounds();
         }
     }

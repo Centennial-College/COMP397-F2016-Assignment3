@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 14 2016
  * @description: Game scene that contains all assets and functionality associated with the game itself
- * @version 0.6.0 added objects/player class
+ * @version 0.6.1 implemented gliding delay when moving player.ts to be more realistic
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
