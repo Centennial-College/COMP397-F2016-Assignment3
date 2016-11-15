@@ -2,9 +2,9 @@
  * @file player.ts
  * @author Kevin Ma 
  * @studentID 300867968
- * @date: Nov 14 2016
+ * @date: Nov 15 2016
  * @description: This is the Player object used in the game 
- * @version 0.6.1 implemented gliding delay when moving player.ts to be more realistic
+ * @version 0.7.0 implemented collision check method for player and other game objects
  */
 module objects {
     export class Player extends objects.GameObject {
@@ -64,6 +64,7 @@ module objects {
             this._dx = 0
             this.y = 430;
             this.x = config.Screen.CENTER_X
+            this.position = new Vector2(this.x, this.y)
         }
 
         /**
@@ -86,7 +87,7 @@ module objects {
                     this._dx = this._newPosition.x > this.x ? 5 : -5
             })
 
-            console.log('dx ' + this._dx);
+            // console.log('dx ' + this._dx);
 
             // only move the plane if the plane's position differs from the mouse position
             if (this._dx > 0 && this.x > this._newPosition.x ||
@@ -95,18 +96,46 @@ module objects {
                 this.x = this._newPosition.x
             }
 
-            console.log('this.position: ' + this.position);
-            console.log('this._newPosition: ' + this._newPosition);
-            console.log('this.y ' + this.y);
-            console.log('this.x ' + this.x);
+            // console.log('this.position: ' + this.position);
+            // console.log('this._newPosition: ' + this._newPosition);
+            // console.log('this.y ' + this.y);
+            // console.log('this.x ' + this.x);
 
             // this.position.x += this._dx
             this.x += this._dx
+            this.position.x = this.x
 
             // this.position = new Vector2(this.x, this.y);
             // this.x = stage.mouseX;
 
             this._checkBounds();
+        }
+
+        /**
+         * This method checks if this player obj is colliding with another GameObject
+         * 
+         * @param {objects.GameObject} other other GameObject
+         * 
+         * @memberOf Player
+         */
+        public checkCollision(other: objects.GameObject): void {
+            //check to see if object is colliding
+
+            if (objects.Vector2.distance(this.position, other.position) < (this.halfHeight + other.halfHeight)) {
+                if (!other.isColliding) {
+                    other.isColliding = true;
+
+                    switch (other.name) {
+                        case "island":
+                            console.log('collided with island!');
+                            break;
+                    }
+
+                }
+            }
+            else {
+                other.isColliding = false;
+            }
         }
     }
 }

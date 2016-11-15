@@ -2,9 +2,9 @@
  * @file game.css
  * @author Kevin Ma 
  * @studentID 300867968
- * @date Nov 13 2016
+ * @date Nov 15 2016
  * @description This file is the main styling sheet for the game
- * @version 0.1.0
+ * @version 0.7.0 implemented collision check method for player and other game objects
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -14,7 +14,7 @@
 }
 
 body {
-    background-color: darkgrey;
+    background-color: black;
 }
 
 canvas {

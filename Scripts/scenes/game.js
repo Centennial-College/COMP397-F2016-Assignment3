@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 14 2016
  * @description: Game scene that contains all assets and functionality associated with the game itself
- * @version 0.6.1 implemented gliding delay when moving player.ts to be more realistic
+ * @version 0.7.0 implemented collision check method for player and other game objects
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -59,6 +59,8 @@ var scenes;
             this._ocean.update();
             this._island.update();
             this._player.update();
+            // check for collisions
+            this._player.checkCollision(this._island);
         };
         return Game;
     }(objects.Scene));

@@ -7,9 +7,9 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @file player.ts
  * @author Kevin Ma
  * @studentID 300867968
- * @date: Nov 14 2016
+ * @date: Nov 15 2016
  * @description: This is the Player object used in the game
- * @version 0.6.1 implemented gliding delay when moving player.ts to be more realistic
+ * @version 0.7.0 implemented collision check method for player and other game objects
  */
 var objects;
 (function (objects) {
@@ -60,6 +60,7 @@ var objects;
             this._dx = 0;
             this.y = 430;
             this.x = config.Screen.CENTER_X;
+            this.position = new objects.Vector2(this.x, this.y);
         };
         /**
          * This method updates the object's properties
@@ -80,22 +81,46 @@ var objects;
                 if (Math.abs(_this._newPosition.x - _this.x) > _this.halfWidth)
                     _this._dx = _this._newPosition.x > _this.x ? 5 : -5;
             });
-            console.log('dx ' + this._dx);
+            // console.log('dx ' + this._dx);
             // only move the plane if the plane's position differs from the mouse position
             if (this._dx > 0 && this.x > this._newPosition.x ||
                 this._dx < 0 && this.x < this._newPosition.x) {
                 this._dx = 0;
                 this.x = this._newPosition.x;
             }
-            console.log('this.position: ' + this.position);
-            console.log('this._newPosition: ' + this._newPosition);
-            console.log('this.y ' + this.y);
-            console.log('this.x ' + this.x);
+            // console.log('this.position: ' + this.position);
+            // console.log('this._newPosition: ' + this._newPosition);
+            // console.log('this.y ' + this.y);
+            // console.log('this.x ' + this.x);
             // this.position.x += this._dx
             this.x += this._dx;
+            this.position.x = this.x;
             // this.position = new Vector2(this.x, this.y);
             // this.x = stage.mouseX;
             this._checkBounds();
+        };
+        /**
+         * This method checks if this player obj is colliding with another GameObject
+         *
+         * @param {objects.GameObject} other other GameObject
+         *
+         * @memberOf Player
+         */
+        Player.prototype.checkCollision = function (other) {
+            //check to see if object is colliding
+            if (objects.Vector2.distance(this.position, other.position) < (this.halfHeight + other.halfHeight)) {
+                if (!other.isColliding) {
+                    other.isColliding = true;
+                    switch (other.name) {
+                        case "island":
+                            console.log('collided with island!');
+                            break;
+                    }
+                }
+            }
+            else {
+                other.isColliding = false;
+            }
         };
         return Player;
     }(objects.GameObject));
