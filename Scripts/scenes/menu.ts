@@ -135,7 +135,7 @@ module scenes {
          */
         private _playgameBtnClick(event: createjs.MouseEvent): void {
             // Change global scene variable to GAME. Call global changeScene() function
-            scene = config.Scene.GAME;
+            scene = config.Scene.LEVEL1;
             changeScene();
         }
 

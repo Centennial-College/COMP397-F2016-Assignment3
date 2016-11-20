@@ -1,10 +1,10 @@
 /**
  * @file config.ts
- * @author Kevin Ma kma45@my.centennialcollege.ca
+ * @author Kevin Ma k
  * @studentID 300867968
- * @date: September 20, 2016
+ * @date: November 20, 2016
  * @description: This file is used to store globally accessible values and states for the game.
- * @version 0.1.0
+ * @version 0.10.0 when player beats level1, level2 starts
  */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 var config;
@@ -13,8 +13,9 @@ var config;
         function Scene() {
         }
         Scene.MENU = 0;
-        Scene.GAME = 1;
-        Scene.GAMEOVER = 2;
+        Scene.LEVEL1 = 1;
+        Scene.LEVEL2 = 2;
+        Scene.GAMEOVER = 3;
         return Scene;
     }());
     config.Scene = Scene;

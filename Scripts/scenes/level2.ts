@@ -1,16 +1,16 @@
 /**
- * @file level1.ts
+ * @file level2.ts
  * @author Kevin Ma 
  * @studentID 300867968
  * @date: Nov 20 2016
- * @description: Level1 scene extends from the abstract Game class and inherits all its behaviors and attributes
+ * @description: Level2 scene extends from the abstract Game class and inherits all its behaviors and attributes
  * @version 0.10.0 when player beats level1, level2 starts
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 module scenes {
-    export class Level1 extends scenes.GameLevel {
+    export class Level2 extends scenes.GameLevel {
 
         // PRIVATE VARIABLES +++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -33,13 +33,12 @@ module scenes {
          */
         public start(): void {
             // Add objects to the scene
-            console.log("Level 1 started...");
+            console.log("Level 2 started...");
 
             // initialize game variables
-            gameLevel = 1
-            gameTime = 20
-            gameScore = 0
-            gameParcelsRemaining = 10
+            gameLevel = 2
+            gameTime = 50
+            gameParcelsRemaining = 25
 
             // stage.addChild(this)
         }
@@ -57,7 +56,7 @@ module scenes {
             super.update()
 
             if (gameParcelsRemaining == 0) {
-                scene = config.Scene.LEVEL2
+                scene = config.Scene.MENU
                 stage.cursor = "auto"
                 changeScene()
             }

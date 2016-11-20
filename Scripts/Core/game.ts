@@ -2,9 +2,9 @@
  * @file game.ts
  * @author Kevin Ma
  * @studentID 300867968
- * @date: Nov 19 2016
+ * @date: Nov 20 2016
  * @description: This file is the entry point for the game.
- * @version 0.9.0 implemented scoring system 
+ * @version 0.10.0 when player beats level1, level2 starts 
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -108,7 +108,7 @@ function init(): void {
     })
 
     // Set initial scene to MENU scene and call changeScene().
-    scene = config.Scene.GAME;
+    scene = config.Scene.LEVEL1;
     changeScene();
 }
 
@@ -141,10 +141,15 @@ function changeScene(): void {
             currentScene = new scenes.Menu();
             console.log("Starting MENU scene");
             break;
-        case config.Scene.GAME:
+        case config.Scene.LEVEL1:
             stage.removeAllChildren();
             currentScene = new scenes.Level1();
-            console.log("Starting GAME scene");
+            console.log("Starting LEVEL1 scene");
+            break;
+        case config.Scene.LEVEL2:
+            stage.removeAllChildren();
+            currentScene = new scenes.Level2();
+            console.log("Starting LEVEL2 scene");
             break;
         case config.Scene.GAMEOVER:
             stage.removeAllChildren();

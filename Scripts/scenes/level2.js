@@ -1,9 +1,9 @@
 /**
- * @file level1.ts
+ * @file level2.ts
  * @author Kevin Ma
  * @studentID 300867968
  * @date: Nov 20 2016
- * @description: Level1 scene extends from the abstract Game class and inherits all its behaviors and attributes
+ * @description: Level2 scene extends from the abstract Game class and inherits all its behaviors and attributes
  * @version 0.10.0 when player beats level1, level2 starts
  */
 var __extends = (this && this.__extends) || function (d, b) {
@@ -14,11 +14,11 @@ var __extends = (this && this.__extends) || function (d, b) {
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 var scenes;
 (function (scenes) {
-    var Level1 = (function (_super) {
-        __extends(Level1, _super);
+    var Level2 = (function (_super) {
+        __extends(Level2, _super);
         // PRIVATE VARIABLES +++++++++++++++++++++++++++++++++++++++++++++++++
         // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        function Level1() {
+        function Level2() {
             _super.call(this);
             _super.prototype.start.call(this);
             this.start();
@@ -33,14 +33,13 @@ var scenes;
          * @memberOf Game
          * @return {void}
          */
-        Level1.prototype.start = function () {
+        Level2.prototype.start = function () {
             // Add objects to the scene
-            console.log("Level 1 started...");
+            console.log("Level 2 started...");
             // initialize game variables
-            gameLevel = 1;
-            gameTime = 20;
-            gameScore = 0;
-            gameParcelsRemaining = 10;
+            gameLevel = 2;
+            gameTime = 50;
+            gameParcelsRemaining = 25;
             // stage.addChild(this)
         };
         /**
@@ -52,16 +51,16 @@ var scenes;
          * @memberOf Game
          * @return {void}
          */
-        Level1.prototype.update = function () {
+        Level2.prototype.update = function () {
             _super.prototype.update.call(this);
             if (gameParcelsRemaining == 0) {
-                scene = config.Scene.LEVEL2;
+                scene = config.Scene.MENU;
                 stage.cursor = "auto";
                 changeScene();
             }
         };
-        return Level1;
+        return Level2;
     }(scenes.GameLevel));
-    scenes.Level1 = Level1;
+    scenes.Level2 = Level2;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=level1.js.map
+//# sourceMappingURL=level2.js.map
