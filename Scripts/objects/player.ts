@@ -122,15 +122,26 @@ module objects {
             //check to see if object is colliding
 
             if (objects.Vector2.distance(this.position, other.position) < (this.halfHeight + other.halfHeight)) {
+
+                // only check for collision if the player is not already colliding with the current obj
+                // to prevent executing collision handling code multiple times for the same collision 
                 if (!other.isColliding) {
                     other.isColliding = true;
 
+                    // check what type of game object the player is colliding with 
                     switch (other.name) {
+                        // if the player collides with an island
                         case "island":
                             console.log('collided with island!');
-                            break;
-                    }
 
+                            // increase score
+
+                            // decrease # remaining packages to deliver
+
+                            // play collision Sound
+                            break;
+
+                    }
                 }
             }
             else {

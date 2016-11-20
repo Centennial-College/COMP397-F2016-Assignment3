@@ -2,9 +2,9 @@
  * @file game.ts
  * @author Kevin Ma
  * @studentID 300867968
- * @date: Nov 14 2016
+ * @date: Nov 19 2016
  * @description: This file is the entry point for the game.
- * @version 0.6.1 implemented gliding delay when moving player.ts to be more realistic
+ * @version 0.8.0 added top UI bar to game scene
  */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /// <reference path = "_reference.ts" />
@@ -14,12 +14,16 @@ var canvas;
 var stage;
 var currentScene;
 var scene;
+// global scope game variables
+var gameTime;
+var gameScore;
+var gameParcelsRemaining;
 // declare textureAtlas
 var textureAtlas;
 // Preload Assets required
 var assetData = [
     { id: "ocean", src: "../../Assets/images/bg.gif" },
-    { id: "atlas", src: "../../Assets/images/atlas.png" }
+    { id: "atlas", src: "../../Assets/images/atlas.png" },
 ];
 /**
  * This method is used to preload all the assets required for the game
@@ -60,25 +64,27 @@ function init() {
         "frames": [
             [1, 1, 226, 178, 0, 0, 0],
             [1, 181, 175, 59, 0, 0, 0],
-            [178, 181, 62, 62, 0, 0, 0],
-            [1, 242, 175, 59, 0, 0, 0],
-            [178, 245, 62, 51, 0, -3, -9],
-            [178, 298, 62, 51, 0, -3, -9],
-            [1, 303, 175, 59, 0, 0, 0],
-            [178, 351, 62, 51, 0, -3, -9],
-            [1, 364, 175, 59, 0, 0, 0]
+            [178, 181, 175, 59, 0, 0, 0],
+            [229, 1, 175, 59, 0, 0, 0],
+            [229, 62, 175, 59, 0, 0, 0],
+            [406, 1, 62, 62, 0, 0, 0],
+            [229, 123, 62, 51, 0, -3, -9],
+            [406, 65, 62, 51, 0, -3, -9],
+            [293, 123, 62, 51, 0, -3, -9],
+            [357, 123, 81, 68, 0, 0, 0]
         ],
         "animations": {
             "cloud": { "frames": [0] },
             "gotomenu": { "frames": [1] },
-            "island": { "frames": [2] },
-            "instructions": { "frames": [3] },
+            "instructions": { "frames": [2] },
+            "playagain": { "frames": [3] },
+            "playgame": { "frames": [4] },
+            "island": { "frames": [5] },
             "plane": {
-                "frames": [4, 5, 7],
+                "frames": [6, 7, 8],
                 "speed": 0.5
             },
-            "playagain": { "frames": [6] },
-            "playgame": { "frames": [8] }
+            "parcel": { "frames": [9] }
         }
     });
     // Set initial scene to MENU scene and call changeScene().
