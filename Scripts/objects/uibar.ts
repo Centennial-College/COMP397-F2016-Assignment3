@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 19 2016
  * @description: This class is used to draw and denote behavior of a UI bar at the top of the game scene
- * @version 0.8.0 added top UI bar to game scene
+ * @version 0.8.1 added functional game clock
  */
 module objects {
     export class UIBar extends createjs.Container {
@@ -15,6 +15,10 @@ module objects {
         private _timeRemainingLabel: objects.Label
         private _scoreLabel: objects.Label
 
+        // used to determine whether one second has passed since last checked with createjs.Ticker
+        private _oldGameTime: number
+        private _newGameTime: number
+
 
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
 
@@ -24,7 +28,16 @@ module objects {
         }
 
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++
+        private _updateGameTime(): void {
+            this._newGameTime = createjs.Ticker.getTime()
 
+            // at least one second has passed since last gametime update
+            // can't do == because we cant match the milliseconds accurately enough
+            if (this._newGameTime >= this._oldGameTime + 1000) {
+                gameTime--
+                this._oldGameTime = this._newGameTime
+            }
+        }
 
         // PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++++++++
 
@@ -37,6 +50,10 @@ module objects {
          * @returns {void}
          */
         public start(): void {
+
+            // only check time when ticker is not paused/runtime is true  
+            this._oldGameTime = createjs.Ticker.getTime(true)
+
             // ui bar background
             this._uiBar = new createjs.Shape()
             this._uiBar.graphics.beginFill('#FFB036');
@@ -80,6 +97,7 @@ module objects {
          * @returns {void}
          */
         public update(): void {
+            this._updateGameTime()
 
             // updates ui text
             this._scoreLabel.text = "- SCORE -\n" + gameScore

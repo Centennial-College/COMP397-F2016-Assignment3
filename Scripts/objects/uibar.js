@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @studentID 300867968
  * @date: Nov 19 2016
  * @description: This class is used to draw and denote behavior of a UI bar at the top of the game scene
- * @version 0.8.0 added top UI bar to game scene
+ * @version 0.8.1 added functional game clock
  */
 var objects;
 (function (objects) {
@@ -21,6 +21,15 @@ var objects;
             this.start();
         }
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++
+        UIBar.prototype._updateGameTime = function () {
+            this._newGameTime = createjs.Ticker.getTime();
+            // at least one second has passed since last gametime update
+            // can't do == because we cant match the milliseconds accurately enough
+            if (this._newGameTime >= this._oldGameTime + 1000) {
+                gameTime--;
+                this._oldGameTime = this._newGameTime;
+            }
+        };
         // PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++++++++
         /**
          * This method is used to initialize public properties
@@ -31,6 +40,8 @@ var objects;
          * @returns {void}
          */
         UIBar.prototype.start = function () {
+            // only check time when ticker is not paused/runtime is true  
+            this._oldGameTime = createjs.Ticker.getTime(true);
             // ui bar background
             this._uiBar = new createjs.Shape();
             this._uiBar.graphics.beginFill('#FFB036');
@@ -68,6 +79,7 @@ var objects;
          * @returns {void}
          */
         UIBar.prototype.update = function () {
+            this._updateGameTime();
             // updates ui text
             this._scoreLabel.text = "- SCORE -\n" + gameScore;
             this._parcelsRemainingLabel.text = "x " + gameParcelsRemaining;

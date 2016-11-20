@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 19 2016
  * @description: Game scene that contains all assets and functionality associated with the game itself
- * @version 0.8.0 added top UI bar to game scene
+ * @version 0.8.1 added functional game clock
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -41,7 +41,7 @@ var scenes;
             this.addChild(this._island = new objects.Island("island"));
             this.addChild(this._player = new objects.Player("plane"));
             this.addChild(this._uiBar = new objects.UIBar());
-            // this._uiBar.shadow = new createjs.Shadow('#000', 2, 2, 20)
+            // this._uiBar.shadow = new createjs.Shadow('#000', 1, 1, 20)
             // Add gamescene to main stage container. 
             stage.addChild(this);
         };
