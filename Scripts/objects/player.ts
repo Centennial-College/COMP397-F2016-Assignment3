@@ -2,9 +2,9 @@
  * @file player.ts
  * @author Kevin Ma 
  * @studentID 300867968
- * @date: Nov 15 2016
+ * @date: Nov 19 2016
  * @description: This is the Player object used in the game 
- * @version 0.7.0 implemented collision check method for player and other game objects
+ * @version 0.8.2 parcels remaining updates when player collides with island
  */
 module objects {
     export class Player extends objects.GameObject {
@@ -132,11 +132,10 @@ module objects {
                     switch (other.name) {
                         // if the player collides with an island
                         case "island":
-                            console.log('collided with island!');
-
                             // increase score
 
                             // decrease # remaining packages to deliver
+                            gameParcelsRemaining--
 
                             // play collision Sound
                             break;
