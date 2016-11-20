@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 19 2016
  * @description: Game scene that contains all assets and functionality associated with the game itself
- * @version 0.9.0 implemented scoring system
+ * @version 0.9.1 hide cursor when game starts to give enhanced user experience
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -38,6 +38,9 @@ module scenes {
         public start(): void {
             // Add objects to the scene
             console.log("Game scene started");
+
+            // hides cursor when game scene starts
+            stage.cursor = 'none'
 
             // initialize game variables
             gameLevel = 1

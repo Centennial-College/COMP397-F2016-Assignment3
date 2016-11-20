@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 19 2016
  * @description: Game scene that contains all assets and functionality associated with the game itself
- * @version 0.9.0 implemented scoring system
+ * @version 0.9.1 hide cursor when game starts to give enhanced user experience
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -33,6 +33,8 @@ var scenes;
         Game.prototype.start = function () {
             // Add objects to the scene
             console.log("Game scene started");
+            // hides cursor when game scene starts
+            stage.cursor = 'none';
             // initialize game variables
             gameLevel = 1;
             gameTime = 60;
