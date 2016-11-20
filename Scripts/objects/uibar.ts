@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 19 2016
  * @description: This class is used to draw and denote behavior of a UI bar at the top of the game scene
- * @version 0.8.1 added functional game clock
+ * @version 0.9.0 implemented scoring system
  */
 module objects {
     export class UIBar extends createjs.Container {
@@ -56,7 +56,8 @@ module objects {
 
             // ui bar background
             this._uiBar = new createjs.Shape()
-            this._uiBar.graphics.beginFill('#FFB036');
+            this._uiBar.graphics.beginLinearGradientFill(["#B26D02", "#FFB036"], [0, 1], 0, 0, 0, 120)
+            // this._uiBar.graphics.beginRadialGradientFill(["#000","#FFB036"], [0, 1], config.Screen.CENTER_X, 20, 600, config.Screen.CENTER_X, 20, 50)
             this._uiBar.graphics.drawRect(0, 0, config.Screen.WIDTH, 40);
             this._uiBar.graphics.endFill();
             this._uiBar.graphics.setStrokeStyle(1);
@@ -100,7 +101,7 @@ module objects {
             this._updateGameTime()
 
             // updates ui text
-            this._scoreLabel.text = "- SCORE -\n" + gameScore
+            this._scoreLabel.text = "- SCORE -\n" + gameScore.toFixed(0)
             this._parcelsRemainingLabel.text = "x " + gameParcelsRemaining
             this._timeRemainingLabel.text = "- TIME -\n" + gameTime
         }

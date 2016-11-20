@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 19 2016
  * @description: This file is the entry point for the game.
- * @version 0.8.0 added top UI bar to game scene
+ * @version 0.9.0 implemented scoring system
  */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /// <reference path = "_reference.ts" />
@@ -15,6 +15,7 @@ var stage;
 var currentScene;
 var scene;
 // global scope game variables
+var gameLevel;
 var gameTime;
 var gameScore;
 var gameParcelsRemaining;

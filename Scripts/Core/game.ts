@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 19 2016
  * @description: This file is the entry point for the game.
- * @version 0.8.0 added top UI bar to game scene 
+ * @version 0.9.0 implemented scoring system 
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -20,6 +20,8 @@ let currentScene: objects.Scene;
 let scene: number;
 
 // global scope game variables
+
+let gameLevel: number
 let gameTime: number
 let gameScore: number
 let gameParcelsRemaining: number

@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @studentID 300867968
  * @date: Nov 19 2016
  * @description: This is the Player object used in the game
- * @version 0.8.2 parcels remaining updates when player collides with island
+ * @version 0.9.0 implemented scoring system
  */
 var objects;
 (function (objects) {
@@ -118,6 +118,9 @@ var objects;
                         // if the player collides with an island
                         case "island":
                             // increase score
+                            // business mission to deliver express packages
+                            // therefore more points awarded when more time remaining and less packages left to deliver
+                            gameScore += (gameTime * gameLevel / gameParcelsRemaining);
                             // decrease # remaining packages to deliver
                             gameParcelsRemaining--;
                             // play collision Sound

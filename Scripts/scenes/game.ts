@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 19 2016
  * @description: Game scene that contains all assets and functionality associated with the game itself
- * @version 0.8.1 added functional game clock
+ * @version 0.9.0 implemented scoring system
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -40,6 +40,7 @@ module scenes {
             console.log("Game scene started");
 
             // initialize game variables
+            gameLevel = 1
             gameTime = 60
             gameScore = 0
             gameParcelsRemaining = 10
