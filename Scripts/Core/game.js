@@ -25,9 +25,11 @@ var textureAtlas;
 var assetData = [
     { id: "ocean", src: "../../Assets/images/bg.gif" },
     { id: "atlas", src: "../../Assets/images/atlas.png" },
-    { id: "lvl1bgmusic", src: "../../Assets/audio/stellar-vibrato.mp3" },
     { id: "thunder", src: "../../Assets/audio/thunder.ogg" },
     { id: "engine", src: "../../Assets/audio/engine.ogg" },
+    { id: "goal", src: "../../Assets/audio/goal.wav" },
+    { id: "yay", src: "../../Assets/audio/yay.mp3" },
+    { id: "gameover", src: "../../Assets/audio/gameover.mp3" },
 ];
 /**
  * This methoengine is used to preload all the assets required for the game

@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: This is the Player object used in the game 
- * @version 0.11.0 added cloud, added cloud collision sound 
+ * @version 0.11.1 added goal sound, yay sound and gameover sounds 
  */
 module objects {
     export class Player extends objects.GameObject {
@@ -162,6 +162,7 @@ module objects {
                             gameParcelsRemaining--
 
                             // play collision Sound
+                            createjs.Sound.play("goal")
                             break;
                         case "cloud":
                             if (!this._untouchable) {

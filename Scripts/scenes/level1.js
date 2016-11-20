@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: Level1 scene extends from the abstract Game class and inherits all its behaviors and attributes
- * @version 0.11.0 added cloud, added cloud collision sound
+ * @version 0.11.1 added goal sound, yay sound and gameover sounds
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -42,8 +42,6 @@ var scenes;
             gameTime = 20;
             gameScore = 0;
             gameParcelsRemaining = 10;
-            this._bgMusic = createjs.Sound.play("engine");
-            this._bgMusic.loop = -1; //loop forever    
             stage.addChild(this);
         };
         /**
@@ -63,6 +61,7 @@ var scenes;
                 changeScene();
             }
             if (gameParcelsRemaining == 0) {
+                createjs.Sound.play("yay");
                 scene = config.Scene.LEVEL2;
                 stage.cursor = "auto";
                 changeScene();

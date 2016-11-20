@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: Level2 scene extends from the abstract Game class and inherits all its behaviors and attributes
- * @version 0.11.0 added cloud, added cloud collision sound
+ * @version 0.11.1 added goal sound, yay sound and gameover sounds
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -37,7 +37,7 @@ var scenes;
             console.log("Level 2 started...");
             // initialize game variables
             gameLevel = 2;
-            gameTime = 50;
+            gameTime = 80;
             gameScore = 0;
             gameParcelsRemaining = 25;
             // cloud array
@@ -71,6 +71,7 @@ var scenes;
                 changeScene();
             }
             if (gameParcelsRemaining == 0) {
+                createjs.Sound.stop();
                 scene = config.Scene.MENU;
                 stage.cursor = "auto";
                 changeScene();

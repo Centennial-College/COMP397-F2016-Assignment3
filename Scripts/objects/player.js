@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: This is the Player object used in the game
- * @version 0.11.0 added cloud, added cloud collision sound
+ * @version 0.11.1 added goal sound, yay sound and gameover sounds
  */
 var objects;
 (function (objects) {
@@ -139,6 +139,7 @@ var objects;
                             // decrease # remaining packages to deliver
                             gameParcelsRemaining--;
                             // play collision Sound
+                            createjs.Sound.play("goal");
                             break;
                         case "cloud":
                             if (!this._untouchable) {

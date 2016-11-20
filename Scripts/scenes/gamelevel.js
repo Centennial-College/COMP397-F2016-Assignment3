@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: GameLevel scene that contains all assets and functionality associated with the game itself
- * @version 0.11.0 added cloud, added cloud collision sound
+ * @version 0.11.1 added goal sound, yay sound and gameover sounds
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -41,6 +41,8 @@ var scenes;
             this.addChild(this._player = new objects.Player("plane"));
             this.addChild(this._uiBar = new objects.UIBar());
             // this._uiBar.shadow = new createjs.Shadow('#000', 1, 1, 20)
+            this._bgMusic = createjs.Sound.play("engine");
+            this._bgMusic.loop = -1; //loop forever    
             // Add gamescene to main stage container. 
             stage.addChild(this);
         };
