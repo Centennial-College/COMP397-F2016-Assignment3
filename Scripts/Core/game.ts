@@ -143,7 +143,7 @@ function changeScene(): void {
             break;
         case config.Scene.GAME:
             stage.removeAllChildren();
-            currentScene = new scenes.Game();
+            currentScene = new scenes.Level1();
             console.log("Starting GAME scene");
             break;
         case config.Scene.GAMEOVER:
