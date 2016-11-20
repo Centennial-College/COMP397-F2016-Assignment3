@@ -7,9 +7,9 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @file player.ts
  * @author Kevin Ma
  * @studentID 300867968
- * @date: Nov 19 2016
+ * @date: Nov 20 2016
  * @description: This is the Player object used in the game
- * @version 0.9.0 implemented scoring system
+ * @version 0.11.0 added cloud, added cloud collision sound
  */
 var objects;
 (function (objects) {
@@ -61,6 +61,7 @@ var objects;
             this.y = 430;
             this.x = config.Screen.CENTER_X;
             this.position = new objects.Vector2(this.x, this.y);
+            this._untouchable = false;
         };
         /**
          * This method updates the object's properties
@@ -97,6 +98,20 @@ var objects;
             this.position.x = this.x;
             // this.position = new Vector2(this.x, this.y);
             // this.x = stage.mouseX;
+            if (this._untouchable) {
+                // creates flickering effect to visualize invulnerabiltiy
+                if (this._untouchableStartTime + createjs.Ticker.getTime() % 500 < 250) {
+                    this.alpha = .5;
+                }
+                else {
+                    this.alpha = 1;
+                }
+                // temp god mode after "respawning" for 3 seconds
+                if (gameTime <= this._untouchableStartTime - 3) {
+                    this._untouchable = false;
+                    this.alpha = 1;
+                }
+            }
             this._checkBounds();
         };
         /**
@@ -124,6 +139,17 @@ var objects;
                             // decrease # remaining packages to deliver
                             gameParcelsRemaining--;
                             // play collision Sound
+                            break;
+                        case "cloud":
+                            if (!this._untouchable) {
+                                createjs.Sound.play("thunder");
+                                gameTime -= 5; // colliding with cloud sets delays in delivering parcels
+                                this.x = config.Screen.CENTER_X;
+                                // this.alpha = .5
+                                this._untouchable = true;
+                                this._untouchableStartTime = gameTime;
+                                console.log('colliding with cloud');
+                            }
                             break;
                     }
                 }

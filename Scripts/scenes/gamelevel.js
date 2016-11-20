@@ -2,9 +2,9 @@
  * @file gamelevel.ts
  * @author Kevin Ma
  * @studentID 300867968
- * @date: Nov 19 2016
+ * @date: Nov 20 2016
  * @description: GameLevel scene that contains all assets and functionality associated with the game itself
- * @version 0.9.2 refactored scenes/game.ts into abstract class gamelevel.ts and extended to concrete level1.ts
+ * @version 0.11.0 added cloud, added cloud collision sound
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -19,6 +19,7 @@ var scenes;
         // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++++++++
         function GameLevel() {
             _super.call(this);
+            this._gameOver = false;
         }
         // PUBLIC FUNCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++
         /**
@@ -58,6 +59,10 @@ var scenes;
             this._island.update();
             this._player.update();
             this._uiBar.update();
+            if (gameTime <= 0) {
+                createjs.Sound.stop();
+                this._gameOver = true;
+            }
             // check for collisions
             this._player.checkCollision(this._island);
         };

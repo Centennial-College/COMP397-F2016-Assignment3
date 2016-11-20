@@ -10,6 +10,7 @@
 /// <reference path="../objects/gameobject.ts" />
 /// <reference path="../objects/uibar.ts" />
 /// <reference path="../objects/island.ts" />
+/// <reference path="../objects/cloud.ts" />
 /// <reference path="../objects/player.ts" />
 /// <reference path="../objects/scene.ts" />
 

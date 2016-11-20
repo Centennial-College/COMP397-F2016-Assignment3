@@ -2,9 +2,9 @@
  * @file player.ts
  * @author Kevin Ma 
  * @studentID 300867968
- * @date: Nov 19 2016
+ * @date: Nov 20 2016
  * @description: This is the Player object used in the game 
- * @version 0.9.0 implemented scoring system
+ * @version 0.11.0 added cloud, added cloud collision sound 
  */
 module objects {
     export class Player extends objects.GameObject {
@@ -12,6 +12,8 @@ module objects {
         private _newPosition: objects.Vector2
         private FRICTION: number = 0.5
         private _dx: number
+        private _untouchable: boolean
+        private _untouchableStartTime: number
 
         // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++
 
@@ -65,6 +67,7 @@ module objects {
             this.y = 430;
             this.x = config.Screen.CENTER_X
             this.position = new Vector2(this.x, this.y)
+            this._untouchable = false
         }
 
         /**
@@ -108,6 +111,23 @@ module objects {
             // this.position = new Vector2(this.x, this.y);
             // this.x = stage.mouseX;
 
+            if (this._untouchable) {
+
+                // creates flickering effect to visualize invulnerabiltiy
+                if (this._untouchableStartTime + createjs.Ticker.getTime() % 500 < 250) {
+                    this.alpha = .5
+                }
+                else {
+                    this.alpha = 1
+                }
+
+                // temp god mode after "respawning" for 3 seconds
+                if (gameTime <= this._untouchableStartTime - 3) {
+                    this._untouchable = false
+                    this.alpha = 1
+                }
+            }
+
             this._checkBounds();
         }
 
@@ -142,6 +162,17 @@ module objects {
                             gameParcelsRemaining--
 
                             // play collision Sound
+                            break;
+                        case "cloud":
+                            if (!this._untouchable) {
+                                createjs.Sound.play("thunder")
+                                gameTime -= 5 // colliding with cloud sets delays in delivering parcels
+                                this.x = config.Screen.CENTER_X
+                                // this.alpha = .5
+                                this._untouchable = true
+                                this._untouchableStartTime = gameTime
+                                console.log('colliding with cloud');
+                            }
                             break;
 
                     }

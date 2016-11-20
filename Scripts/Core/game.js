@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: This file is the entry point for the game.
- * @version 0.10.0 when player beats level1, level2 starts
+ * @version 0.11.0 added cloud, added cloud collision sound
  */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /// <reference path = "_reference.ts" />
@@ -25,9 +25,12 @@ var textureAtlas;
 var assetData = [
     { id: "ocean", src: "../../Assets/images/bg.gif" },
     { id: "atlas", src: "../../Assets/images/atlas.png" },
+    { id: "lvl1bgmusic", src: "../../Assets/audio/stellar-vibrato.mp3" },
+    { id: "thunder", src: "../../Assets/audio/thunder.ogg" },
+    { id: "engine", src: "../../Assets/audio/engine.ogg" },
 ];
 /**
- * This method is used to preload all the assets required for the game
+ * This methoengine is used to preload all the assets required for the game
  * before it starts running.
  *
  * @method preload
@@ -36,7 +39,7 @@ var assetData = [
 function preload() {
     // Create a queue for assets being loaded
     assets = new createjs.LoadQueue(false);
-    // assets.installPlugin(createjs.Sound);
+    assets.installPlugin(createjs.Sound);
     // Register callback function to be run when assets complete loading.
     assets.on("complete", init, this);
     assets.loadManifest(assetData);
@@ -89,7 +92,7 @@ function init() {
         }
     });
     // Set initial scene to MENU scene and call changeScene().
-    scene = config.Scene.LEVEL1;
+    scene = config.Scene.LEVEL2;
     changeScene();
 }
 /**

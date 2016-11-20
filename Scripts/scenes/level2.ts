@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: Level2 scene extends from the abstract Game class and inherits all its behaviors and attributes
- * @version 0.10.0 when player beats level1, level2 starts
+ * @version 0.11.0 added cloud, added cloud collision sound
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -13,6 +13,7 @@ module scenes {
     export class Level2 extends scenes.GameLevel {
 
         // PRIVATE VARIABLES +++++++++++++++++++++++++++++++++++++++++++++++++
+        private _clouds: objects.Cloud[]
 
         // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
@@ -38,9 +39,17 @@ module scenes {
             // initialize game variables
             gameLevel = 2
             gameTime = 50
+            gameScore = 0
             gameParcelsRemaining = 25
 
-            // stage.addChild(this)
+            // cloud array
+            this._clouds = new Array<objects.Cloud>();
+            for (let count = 0; count < 2; count++) {
+                this._clouds.push(new objects.Cloud("cloud"));
+                this.addChild(this._clouds[count], this._uiBar);
+            }
+
+            stage.addChild(this)
         }
 
         /**
@@ -54,6 +63,18 @@ module scenes {
          */
         public update(): void {
             super.update()
+
+            // update each cloud
+            this._clouds.forEach(cloud => {
+                cloud.update();
+                this._player.checkCollision(cloud)
+            });
+
+            if (this._gameOver) {
+                scene = config.Scene.MENU
+                stage.cursor = "auto"
+                changeScene()
+            }
 
             if (gameParcelsRemaining == 0) {
                 scene = config.Scene.MENU

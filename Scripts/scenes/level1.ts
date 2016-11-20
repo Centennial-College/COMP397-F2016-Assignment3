@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: Level1 scene extends from the abstract Game class and inherits all its behaviors and attributes
- * @version 0.10.0 when player beats level1, level2 starts
+ * @version 0.11.0 added cloud, added cloud collision sound
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -37,11 +37,15 @@ module scenes {
 
             // initialize game variables
             gameLevel = 1
+            // gameTime = 3
             gameTime = 20
             gameScore = 0
             gameParcelsRemaining = 10
 
-            // stage.addChild(this)
+            this._bgMusic = createjs.Sound.play("engine")
+            this._bgMusic.loop = -1 //loop forever    
+
+            stage.addChild(this)
         }
 
         /**
@@ -55,6 +59,12 @@ module scenes {
          */
         public update(): void {
             super.update()
+
+            if (this._gameOver) {
+                scene = config.Scene.MENU
+                stage.cursor = "auto"
+                changeScene()
+            }
 
             if (gameParcelsRemaining == 0) {
                 scene = config.Scene.LEVEL2

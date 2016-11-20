@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: Level2 scene extends from the abstract Game class and inherits all its behaviors and attributes
- * @version 0.10.0 when player beats level1, level2 starts
+ * @version 0.11.0 added cloud, added cloud collision sound
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -16,7 +16,6 @@ var scenes;
 (function (scenes) {
     var Level2 = (function (_super) {
         __extends(Level2, _super);
-        // PRIVATE VARIABLES +++++++++++++++++++++++++++++++++++++++++++++++++
         // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++++++++
         function Level2() {
             _super.call(this);
@@ -39,8 +38,15 @@ var scenes;
             // initialize game variables
             gameLevel = 2;
             gameTime = 50;
+            gameScore = 0;
             gameParcelsRemaining = 25;
-            // stage.addChild(this)
+            // cloud array
+            this._clouds = new Array();
+            for (var count = 0; count < 2; count++) {
+                this._clouds.push(new objects.Cloud("cloud"));
+                this.addChild(this._clouds[count], this._uiBar);
+            }
+            stage.addChild(this);
         };
         /**
          * This function updates the objects contained in the game scene
@@ -52,7 +58,18 @@ var scenes;
          * @return {void}
          */
         Level2.prototype.update = function () {
+            var _this = this;
             _super.prototype.update.call(this);
+            // update each cloud
+            this._clouds.forEach(function (cloud) {
+                cloud.update();
+                _this._player.checkCollision(cloud);
+            });
+            if (this._gameOver) {
+                scene = config.Scene.MENU;
+                stage.cursor = "auto";
+                changeScene();
+            }
             if (gameParcelsRemaining == 0) {
                 scene = config.Scene.MENU;
                 stage.cursor = "auto";

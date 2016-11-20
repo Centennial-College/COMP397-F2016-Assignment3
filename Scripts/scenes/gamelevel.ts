@@ -2,9 +2,9 @@
  * @file gamelevel.ts
  * @author Kevin Ma 
  * @studentID 300867968
- * @date: Nov 19 2016
+ * @date: Nov 20 2016
  * @description: GameLevel scene that contains all assets and functionality associated with the game itself
- * @version 0.9.2 refactored scenes/game.ts into abstract class gamelevel.ts and extended to concrete level1.ts
+ * @version 0.11.0 added cloud, added cloud collision sound
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -12,17 +12,20 @@
 module scenes {
     export abstract class GameLevel extends objects.Scene {
 
-        // PRIVATE VARIABLES +++++++++++++++++++++++++++++++++++++++++++++++++
-        private _ocean: objects.Ocean;
-        private _island: objects.Island
-        private _player: objects.Player
+        // INSTANCE VARIABLES +++++++++++++++++++++++++++++++++++++++++++++++++
+        protected _ocean: objects.Ocean;
+        protected _island: objects.Island
+        protected _player: objects.Player
+        protected _gameOver: boolean
+        protected _bgMusic: createjs.AbstractSoundInstance
 
         // top UI bar
-        private _uiBar: objects.UIBar
+        protected _uiBar: objects.UIBar
 
         // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
-            super();
+            super()
+            this._gameOver = false
         }
 
         // PUBLIC FUNCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++
@@ -67,6 +70,11 @@ module scenes {
             this._island.update()
             this._player.update()
             this._uiBar.update()
+
+            if (gameTime <= 0) {
+                createjs.Sound.stop()
+                this._gameOver = true
+            }
 
             // check for collisions
             this._player.checkCollision(this._island)
