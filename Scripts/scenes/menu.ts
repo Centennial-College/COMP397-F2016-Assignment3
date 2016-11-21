@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: This file contains all assets and functionality associated with the menu itself.
- * @version 0.12.1 added scenes/instructions.ts
+ * @version 0.12.2 updated scenes/instructions.ts background roundrect
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -65,7 +65,7 @@ module scenes {
             this._subtitleLabel = new objects.Label("Air Express!", "40px custfont", "#98D9FF", 10000, -10000)
             this._subtitleLabel.scaleX = this._subtitleLabel.scaleY = 500
             this._subtitleLabel.alpha = 0
-            createjs.Tween.get(this._subtitleLabel).wait(2000).to({
+            createjs.Tween.get(this._subtitleLabel).wait(1500).to({
                 x: config.Screen.CENTER_X + 100,
                 y: config.Screen.CENTER_Y - 50,
                 scaleX: 1,

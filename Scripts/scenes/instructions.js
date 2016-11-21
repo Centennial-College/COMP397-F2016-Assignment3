@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: This scene guides the player in playing this game
- * @version 0.12.1 added scenes/instructions.ts
+ * @version 0.12.2 updated scenes/instructions.ts background roundrect
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];

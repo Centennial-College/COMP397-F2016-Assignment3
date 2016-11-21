@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: GameOver scene is used to display game over message and redirect the player to menu or level 1 again
- * @version 0.12.0 added gameover scene
+ * @version 0.12.2 updated scenes/instructions.ts background roundrect
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -46,7 +46,7 @@ var scenes;
                 y: config.Screen.CENTER_Y - 50,
             }, 1500, createjs.Ease.backOut);
             this.addChild(this._titleLabel);
-            this._scoreLabel = new objects.Label("You took too much time to deliver the parcels.\nYour final score was: " + gameScore, "20px custfont", "#fff", config.Screen.CENTER_X, config.Screen.CENTER_Y + 25);
+            this._scoreLabel = new objects.Label("You took too much time to deliver the parcels.\nYour final score was: " + gameScore.toFixed(0), "20px custfont", "#fff", config.Screen.CENTER_X, config.Screen.CENTER_Y + 25);
             this._scoreLabel.shadow = new createjs.Shadow("#444", 2, 2, 2);
             this._scoreLabel.alpha = 0.8;
             // Add buttons to scene. Register for click callback function

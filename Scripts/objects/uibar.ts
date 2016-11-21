@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 19 2016
  * @description: This class is used to draw and denote behavior of a UI bar at the top of the game scene
- * @version 0.9.0 implemented scoring system
+ * @version 0.12.2 updated scenes/instructions.ts background roundrect
  */
 module objects {
     export class UIBar extends createjs.Container {
@@ -56,12 +56,12 @@ module objects {
 
             // ui bar background
             this._uiBar = new createjs.Shape()
-            this._uiBar.graphics.beginLinearGradientFill(["#B26D02", "#FFB036"], [0, 1], 0, 0, 0, 120)
-            // this._uiBar.graphics.beginRadialGradientFill(["#000","#FFB036"], [0, 1], config.Screen.CENTER_X, 20, 600, config.Screen.CENTER_X, 20, 50)
+            this._uiBar.graphics.beginLinearGradientFill(["#ccc", "#444"], [0, 1], 0, 0, 0, 40)
+            // this._uiBar.graphics.beginLinearGradientFill(["#B26D02", "#FFB036"], [0, 1], 0, 0, 0, 120)
             this._uiBar.graphics.drawRect(0, 0, config.Screen.WIDTH, 40);
             this._uiBar.graphics.endFill();
             this._uiBar.graphics.setStrokeStyle(1);
-            this._uiBar.graphics.beginStroke('#B26D02');
+            this._uiBar.graphics.beginStroke('#888');
             this._uiBar.graphics.drawRect(0, 0, config.Screen.WIDTH, 40);
             this._uiBar.graphics.endStroke();
             this.addChild(this._uiBar)
