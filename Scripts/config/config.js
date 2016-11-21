@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: November 20, 2016
  * @description: This file is used to store globally accessible values and states for the game.
- * @version 0.12.1 added scenes/instructions.ts
+ * @version 0.13.0 added scenes/gamewin.ts
  */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 var config;
@@ -17,6 +17,7 @@ var config;
         Scene.LEVEL2 = 2;
         Scene.GAMEOVER = 3;
         Scene.INSTRUCTIONS = 4;
+        Scene.GAMEWIN = 5;
         return Scene;
     }());
     config.Scene = Scene;

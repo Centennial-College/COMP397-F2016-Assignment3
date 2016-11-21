@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: This file is the entry point for the game.
- * @version 0.12.3 fixed all game scene paths 
+ * @version 0.13.0 added scenes/gamewin.ts 
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -165,6 +165,11 @@ function changeScene(): void {
             stage.removeAllChildren();
             currentScene = new scenes.GameOver();
             console.log("Starting GAMEOVER scene");
+            break;
+        case config.Scene.GAMEWIN:
+            stage.removeAllChildren();
+            currentScene = new scenes.GameWin();
+            console.log("Starting GAMEWIN scene");
             break;
     }
 
