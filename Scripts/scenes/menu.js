@@ -2,9 +2,9 @@
  * @file menu.ts
  * @author Kevin Ma
  * @studentID 300867968
- * @date: Nov 13 2016
+ * @date: Nov 20 2016
  * @description: This file contains all assets and functionality associated with the menu itself.
- * @version 0.4.1 added boxblur filter to the ocean bg on title scene
+ * @version 0.12.1 added scenes/instructions.ts
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -72,7 +72,7 @@ var scenes;
             this._playgameBtn.on("click", this._playgameBtnClick, this);
             this._instructionsBtn = new objects.Button("instructions", config.Screen.CENTER_X - 100, config.Screen.CENTER_Y + 115);
             this._instructionsBtn.shadow = new createjs.Shadow('#000', 5, 5, 15);
-            this._instructionsBtn.on("click", this._playgameBtnClick, this);
+            this._instructionsBtn.on("click", this._instructionsBtnClick, this);
             //add to panel for animation purposes
             this._bottomPanel = new createjs.Container();
             this._bottomPanel.addChild(this._authorLabel);
@@ -127,9 +127,8 @@ var scenes;
          * @return {void}
          */
         Menu.prototype._instructionsBtnClick = function (event) {
-            // Change global scene variable to GAME. Call global changeScene() function
-            // scene = config.Scene.GAME;
-            // changeScene();
+            scene = config.Scene.INSTRUCTIONS;
+            changeScene();
         };
         return Menu;
     }(objects.Scene));

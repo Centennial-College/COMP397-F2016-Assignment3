@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: November 20, 2016
  * @description: This file is used to store globally accessible values and states for the game.
- * @version 0.10.0 when player beats level1, level2 starts
+ * @version 0.12.1 added scenes/instructions.ts
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -15,6 +15,7 @@ module config {
         public static LEVEL1: number = 1;
         public static LEVEL2: number = 2;
         public static GAMEOVER: number = 3;
+        public static INSTRUCTIONS: number = 4;
     }
 
     export class Screen {

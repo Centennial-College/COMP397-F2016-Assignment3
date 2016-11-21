@@ -94,7 +94,7 @@ function init() {
         }
     });
     // Set initial scene to MENU scene and call changeScene().
-    scene = config.Scene.LEVEL2;
+    scene = config.Scene.INSTRUCTIONS;
     changeScene();
 }
 /**
@@ -123,6 +123,11 @@ function changeScene() {
             stage.removeAllChildren();
             currentScene = new scenes.Menu();
             console.log("Starting MENU scene");
+            break;
+        case config.Scene.INSTRUCTIONS:
+            stage.removeAllChildren();
+            currentScene = new scenes.Instructions();
+            console.log("Starting Instructions scene");
             break;
         case config.Scene.LEVEL1:
             stage.removeAllChildren();

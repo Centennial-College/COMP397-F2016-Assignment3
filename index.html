@@ -4,7 +4,7 @@
     @studentID 300867968
     @date Nov 20 2016
     @description This file is the manifest for the web app
-    @version 0.11.0 added cloud, added cloud collision sound
+    @version 0.12.1 added scenes/instructions.ts
 -->
 
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -29,28 +29,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
-                <div id="instructions" style="width: 600px;height: 375px;
-				text-align: center; display:none; background-color:rgba(255,255,255,0.7); border-radius:25px;">
-
-                    <h3 style="font-family:arial;font-weight:bold;">Background Story</h3>
-                    <p style="text-align:left;margin-left:15px;margin-bottom:0px;">You are the <span style="color:green">lone soldier</span> who defends his country from alien invaders
-                        known as
-                        <u style="color:red">tetrominoes!</u><br> You must use your <span style="color:green">particle launcher</span> shoot to
-                        kill them before they reach your base. If they reach your base, your country will get destroyed.
-                        You must kill a certain number of enemies to advance to the next level. You will emerge victorious
-                        as your country's hero when you slay all thy enemies...
-                    </p>
-
-                    <h3 style="font-family:arial;margin-top:0px;font-weight:bold;">Controls</h3>
-                    <p style="text-align:left;margin-left:15px">Press on the <strong>LEFT</strong> and <strong>RIGHT</strong> arrow keys to navigate your particle launcher
-                        across your country's borders.</p>
-                    <p style="text-align:left;margin-left:15px;margin-bottom:0px">Press on the <strong>SPACE</strong> key to fire your particle launcher. You must wait for it to recharge
-                        in between shots. Press Q, W, or T to switch between bullets as you unlock them through levelling
-                        up.
-                    </p>
-                    ---
-                    <h3 style="font-weight: bold;margin-top:10px">GOOD LUCK!</h3>
-                </div>
                 <canvas id="canvas" width="640" height="480"></canvas>
             </div>
         </div>
@@ -86,6 +64,7 @@
     <script src="Scripts/scenes/level1.js"></script>
     <script src="Scripts/scenes/level2.js"></script>
     <script src="Scripts/scenes/menu.js"></script>
+    <script src="Scripts/scenes/instructions.js"></script>
     <script src="Scripts/scenes/gameover.js"></script>
 
 

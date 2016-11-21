@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: November 20, 2016
  * @description: This file is used to store globally accessible values and states for the game.
- * @version 0.10.0 when player beats level1, level2 starts
+ * @version 0.12.1 added scenes/instructions.ts
  */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 var config;
@@ -16,6 +16,7 @@ var config;
         Scene.LEVEL1 = 1;
         Scene.LEVEL2 = 2;
         Scene.GAMEOVER = 3;
+        Scene.INSTRUCTIONS = 4;
         return Scene;
     }());
     config.Scene = Scene;

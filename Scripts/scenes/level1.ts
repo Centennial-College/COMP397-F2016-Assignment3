@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: Level1 scene extends from the abstract Game class and inherits all its behaviors and attributes
- * @version 0.11.1 added goal sound, yay sound and gameover sounds
+ * @version 0.12.1 added scenes/instructions.ts
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -58,7 +58,7 @@ module scenes {
             super.update()
 
             if (this._gameOver) {
-                scene = config.Scene.MENU
+                scene = config.Scene.GAMEOVER
                 stage.cursor = "auto"
                 changeScene()
             }

@@ -15,6 +15,7 @@
 /// <reference path="../objects/scene.ts" />
 
 /// <reference path="../scenes/menu.ts" />
+/// <reference path="../scenes/instructions.ts" />
 /// <reference path="../scenes/gamelevel.ts" />
 /// <reference path="../scenes/level1.ts" />
 /// <reference path="../scenes/level2.ts" />
