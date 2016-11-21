@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: Level2 scene extends from the abstract Game class and inherits all its behaviors and attributes
- * @version 0.13.0 added scenes/gamewin.ts
+ * @version 0.13.1 reduced parcelsGoal for level 2 so it is more possible to win
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -39,7 +39,7 @@ module scenes {
             // initialize game variables
             gameLevel = 2
             gameTime = 80
-            gameParcelsRemaining = 25
+            gameParcelsRemaining = 20
 
             // cloud array
             this._clouds = new Array<objects.Cloud>();
