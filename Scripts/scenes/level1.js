@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: Level1 scene extends from the abstract Game class and inherits all its behaviors and attributes
- * @version 0.12.1 added scenes/instructions.ts
+ * @version 1.0.0 initial release.
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -62,7 +62,7 @@ var scenes;
             }
             if (gameParcelsRemaining == 0) {
                 createjs.Sound.play("yay");
-                scene = config.Scene.LEVEL2;
+                scene = config.Scene.LOADING2;
                 stage.cursor = "auto";
                 changeScene();
             }

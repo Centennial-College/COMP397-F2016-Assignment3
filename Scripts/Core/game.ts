@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: This file is the entry point for the game.
- * @version 0.14.0 added scenes/loadingscreen.ts 
+ * @version 1.0.0 initial release. 
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -114,8 +114,7 @@ function init(): void {
     })
 
     // Set initial scene to MENU scene and call changeScene().
-    scene = config.Scene.LOADING1;
-    // scene = config.Scene.MENU;
+    scene = config.Scene.MENU;
     changeScene();
 }
 
@@ -164,6 +163,7 @@ function changeScene(): void {
             console.log("Starting LEVEL1 scene");
             break;
         case config.Scene.LEVEL2:
+            stage.removeAllEventListeners()
             stage.removeAllChildren();
             currentScene = new scenes.Level2();
             console.log("Starting LEVEL2 scene");
@@ -182,6 +182,11 @@ function changeScene(): void {
             stage.removeAllChildren();
             currentScene = new scenes.LoadingScreen1();
             console.log("Starting LOADING1 scene");
+            break;
+        case config.Scene.LOADING2:
+            stage.removeAllChildren();
+            currentScene = new scenes.LoadingScreen2();
+            console.log("Starting LOADING2 scene");
             break;
     }
 

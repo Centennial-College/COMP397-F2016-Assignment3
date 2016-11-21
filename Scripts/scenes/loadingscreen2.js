@@ -1,9 +1,9 @@
 /**
- * @file loadingscreen1.ts
+ * @file loadingscreen2.ts
  * @author Kevin Ma
  * @studentID 300867968
  * @date: Nov 20 2016
- * @description: This class is used to introduce new game concept/controls to the user for level 1
+ * @description: This class is used to introduce new game concept/controls to the user for level 2
  * @version 1.0.0 initial release.
  */
 var __extends = (this && this.__extends) || function (d, b) {
@@ -14,10 +14,10 @@ var __extends = (this && this.__extends) || function (d, b) {
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 var scenes;
 (function (scenes) {
-    var LoadingScreen1 = (function (_super) {
-        __extends(LoadingScreen1, _super);
+    var LoadingScreen2 = (function (_super) {
+        __extends(LoadingScreen2, _super);
         // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        function LoadingScreen1() {
+        function LoadingScreen2() {
             _super.call(this);
         }
         // PUBLIC FUNCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++
@@ -30,38 +30,32 @@ var scenes;
          * @memberOf LoadingScreen
          * @return {void}
          */
-        LoadingScreen1.prototype.start = function () {
+        LoadingScreen2.prototype.start = function () {
+            createjs.Sound.stop();
             // Add objects to the scene
-            console.log("Game scene started");
             this.addChild(this._blackRectScreen = new createjs.Shape());
             this._blackRectScreen.graphics.beginFill("#000");
             this._blackRectScreen.graphics.drawRect(0, 0, config.Screen.WIDTH, config.Screen.HEIGHT);
             this._blackRectScreen.graphics.endFill();
-            this._titleLabel = new objects.Label("Level 1: Training", "50px custfont", "#F0E68C", config.Screen.CENTER_X, config.Screen.CENTER_Y - 100);
+            this._titleLabel = new objects.Label("Level 2: Probation", "50px custfont", "#F0E68C", config.Screen.CENTER_X, config.Screen.CENTER_Y - 50);
             this._titleLabel.shadow = new createjs.Shadow('#000', 5, 5, 15);
-            this._subtitleLabel = new objects.Label("On your first day of work, the company provides you training.", "20px custfont", "#888", config.Screen.CENTER_X, config.Screen.CENTER_Y - 50);
+            this._subtitleLabel = new objects.Label("As a trained employee candidate, you now\nneed to prove your worth to the company.", "20px custfont", "#888", config.Screen.CENTER_X, config.Screen.CENTER_Y);
             this._subtitleLabel.shadow = new createjs.Shadow('#000', 5, 5, 15);
             this._actionLabel = new objects.Label("- Click anywhere to continue -", "20px custfont", "#fff", config.Screen.CENTER_X, config.Screen.CENTER_Y + 200);
             this._actionLabel.shadow = new createjs.Shadow('#000', 5, 5, 15);
-            this._islandSprite = new createjs.Sprite(textureAtlas, 'island');
-            this._islandSprite.x = config.Screen.CENTER_X - 200;
-            this._islandSprite.y = config.Screen.CENTER_Y - 10;
-            this._playerSprite = new createjs.Sprite(textureAtlas, 'plane');
-            this._playerSprite.x = config.Screen.CENTER_X - 200;
-            this._playerSprite.y = config.Screen.CENTER_Y + 70;
-            this._islandLabel = new objects.Label("Parcels need to be delivered to these islands.\nFly your airplane over the islands to deliver\nparcels.", "15px custfont", "#fff", config.Screen.CENTER_X + 50, config.Screen.CENTER_Y + 20);
-            this._islandLabel.shadow = new createjs.Shadow('#000', 5, 5, 15);
-            this._playerLabel = new objects.Label("You will use this airplane to deliver the parcels.\nThe plane steers left and right by following\nyour mouse.", "15px custfont", "#fff", config.Screen.CENTER_X + 60, config.Screen.CENTER_Y + 110);
-            this._playerLabel.shadow = new createjs.Shadow('#000', 5, 5, 15);
+            this._cloudSprite = new createjs.Sprite(textureAtlas, 'cloud');
+            this._cloudSprite.scaleX = this._cloudSprite.scaleY = .5;
+            this._cloudSprite.x = config.Screen.CENTER_X - 250;
+            this._cloudSprite.y = config.Screen.CENTER_Y + 40;
+            this._cloudLabel = new objects.Label("You will now begin to encounter clouds.\nColliding with clouds slows you down.\nYour time to deliver parcels decreases by\n5 seconds. Your airplane will be invulnerable\nto clouds for the next 3 seconds.", "15px custfont", "#fff", config.Screen.CENTER_X + 55, config.Screen.CENTER_Y + 80);
+            this._cloudLabel.shadow = new createjs.Shadow('#000', 5, 5, 15);
             // load everything into container for easier animations
             this._loadContainer = new createjs.Container();
             this._loadContainer.addChild(this._titleLabel);
             this._loadContainer.addChild(this._subtitleLabel);
             this._loadContainer.addChild(this._actionLabel);
-            this._loadContainer.addChild(this._islandSprite);
-            this._loadContainer.addChild(this._islandLabel);
-            this._loadContainer.addChild(this._playerSprite);
-            this._loadContainer.addChild(this._playerLabel);
+            this._loadContainer.addChild(this._cloudSprite);
+            this._loadContainer.addChild(this._cloudLabel);
             this._loadContainer.alpha = 0;
             createjs.Tween.get(this._loadContainer).wait(500).to({
                 alpha: 1
@@ -70,7 +64,7 @@ var scenes;
             // Add gamescene to main stage container. 
             stage.addChild(this);
             stage.on('stagemousedown', function (e) {
-                scene = config.Scene.LEVEL1;
+                scene = config.Scene.LEVEL2;
                 changeScene();
             });
         };
@@ -83,7 +77,7 @@ var scenes;
          * @memberOf LoadingScreen
          * @return {void}
          */
-        LoadingScreen1.prototype.update = function () {
+        LoadingScreen2.prototype.update = function () {
             // flickering of actionlabel
             if (createjs.Ticker.getTime() % 1000 < 500) {
                 this._actionLabel.alpha = 0;
@@ -92,8 +86,8 @@ var scenes;
                 this._actionLabel.alpha = 1;
             }
         };
-        return LoadingScreen1;
+        return LoadingScreen2;
     }(objects.Scene));
-    scenes.LoadingScreen1 = LoadingScreen1;
+    scenes.LoadingScreen2 = LoadingScreen2;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=loadingscreen1.js.map
+//# sourceMappingURL=loadingscreen2.js.map
