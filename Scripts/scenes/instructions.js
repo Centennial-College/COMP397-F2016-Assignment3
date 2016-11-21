@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: This scene guides the player in playing this game
- * @version 0.12.2 updated scenes/instructions.ts background roundrect
+ * @version 0.12.3 fixed all game scene paths
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -58,7 +58,6 @@ var scenes;
             this._instructionsLabel.alpha = 0.8;
             this._instructionsRoundRectBG = new createjs.Shape();
             this._instructionsRoundRectBG.graphics.beginLinearGradientFill(["#fff", "#888"], [0, 1], 0, 0, 550, 310);
-            // this._instructionsRoundRectBG.graphics.beginLinearGradientFill(["#FFA519", "#B26D02"], [0, 1], 0, 0, 550, 310)
             this._instructionsRoundRectBG.graphics.drawRoundRect(45, 75, 550, 310, 25);
             this._instructionsRoundRectBG.shadow = new createjs.Shadow("#000", 2, 2, 20);
             this._instructionsRoundRectBG.alpha = .6;
@@ -73,7 +72,6 @@ var scenes;
                 alpha: 1
             }, 2000, createjs.Ease.cubicIn);
             this.addChild(this._bottomPanel);
-            createjs.Sound.play('gameover');
             // Add scene to global stage container
             stage.addChild(this);
         };

@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: Level2 scene extends from the abstract Game class and inherits all its behaviors and attributes
- * @version 0.12.0 added gameover scene
+ * @version 0.12.3 fixed all game scene paths
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -37,8 +37,7 @@ var scenes;
             console.log("Level 2 started...");
             // initialize game variables
             gameLevel = 2;
-            gameTime = 0;
-            // gameTime = 80
+            gameTime = 80;
             gameScore = 0;
             gameParcelsRemaining = 25;
             // cloud array

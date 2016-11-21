@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: This file is the entry point for the game.
- * @version 0.11.0 added cloud, added cloud collision sound
+ * @version 0.12.3 fixed all game scene paths
  */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /// <reference path = "_reference.ts" />
@@ -94,7 +94,7 @@ function init() {
         }
     });
     // Set initial scene to MENU scene and call changeScene().
-    scene = config.Scene.INSTRUCTIONS;
+    scene = config.Scene.MENU;
     changeScene();
 }
 /**

@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: This is the Player object used in the game
- * @version 0.11.1 added goal sound, yay sound and gameover sounds
+ * @version 0.12.3 fixed all game scene paths
  */
 var objects;
 (function (objects) {
@@ -82,22 +82,14 @@ var objects;
                 if (Math.abs(_this._newPosition.x - _this.x) > _this.halfWidth)
                     _this._dx = _this._newPosition.x > _this.x ? 5 : -5;
             });
-            // console.log('dx ' + this._dx);
             // only move the plane if the plane's position differs from the mouse position
             if (this._dx > 0 && this.x > this._newPosition.x ||
                 this._dx < 0 && this.x < this._newPosition.x) {
                 this._dx = 0;
                 this.x = this._newPosition.x;
             }
-            // console.log('this.position: ' + this.position);
-            // console.log('this._newPosition: ' + this._newPosition);
-            // console.log('this.y ' + this.y);
-            // console.log('this.x ' + this.x);
-            // this.position.x += this._dx
             this.x += this._dx;
             this.position.x = this.x;
-            // this.position = new Vector2(this.x, this.y);
-            // this.x = stage.mouseX;
             if (this._untouchable) {
                 // creates flickering effect to visualize invulnerabiltiy
                 if (this._untouchableStartTime + createjs.Ticker.getTime() % 500 < 250) {
@@ -145,8 +137,6 @@ var objects;
                             if (!this._untouchable) {
                                 createjs.Sound.play("thunder");
                                 gameTime -= 5; // colliding with cloud sets delays in delivering parcels
-                                this.x = config.Screen.CENTER_X;
-                                // this.alpha = .5
                                 this._untouchable = true;
                                 this._untouchableStartTime = gameTime;
                                 console.log('colliding with cloud');

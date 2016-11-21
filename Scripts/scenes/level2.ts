@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: Level2 scene extends from the abstract Game class and inherits all its behaviors and attributes
- * @version 0.12.0 added gameover scene
+ * @version 0.12.3 fixed all game scene paths
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -38,8 +38,7 @@ module scenes {
 
             // initialize game variables
             gameLevel = 2
-            gameTime = 0
-            // gameTime = 80
+            gameTime = 80
             gameScore = 0
             gameParcelsRemaining = 25
 
