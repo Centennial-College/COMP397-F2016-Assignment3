@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: GameWin scene is used to display game win message and redirect the player to menu or level 1 again
- * @version 0.13.0 added scenes/gamewin.ts
+ * @version 0.14.0 added scenes/loadingscreen.ts
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -95,7 +95,7 @@ var scenes;
          */
         GameWin.prototype._playAgainBtnClick = function (event) {
             // Change global scene variable to LEVEL1. Call global changeScene() function
-            scene = config.Scene.LEVEL1;
+            scene = config.Scene.LOADING1;
             changeScene();
         };
         /**

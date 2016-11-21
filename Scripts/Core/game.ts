@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: This file is the entry point for the game.
- * @version 0.13.0 added scenes/gamewin.ts 
+ * @version 0.14.0 added scenes/loadingscreen.ts 
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -17,6 +17,7 @@ let canvas: HTMLElement;
 let stage: createjs.Stage;
 
 let currentScene: objects.Scene;
+let tempScene: objects.Scene
 let scene: number;
 
 // global scope game variables
@@ -113,7 +114,8 @@ function init(): void {
     })
 
     // Set initial scene to MENU scene and call changeScene().
-    scene = config.Scene.MENU;
+    scene = config.Scene.LOADING1;
+    // scene = config.Scene.MENU;
     changeScene();
 }
 
@@ -126,7 +128,11 @@ function init(): void {
  */
 function gameLoop(event: createjs.Event): void {
     // Update whatever scene is currently active.
-    currentScene.update();
+    if (tempScene != null) {
+        tempScene.update()
+    } else {
+        currentScene.update();
+    }
     stage.update();
 }
 
@@ -152,6 +158,7 @@ function changeScene(): void {
             console.log("Starting Instructions scene");
             break;
         case config.Scene.LEVEL1:
+            stage.removeAllEventListeners()
             stage.removeAllChildren();
             currentScene = new scenes.Level1();
             console.log("Starting LEVEL1 scene");
@@ -170,6 +177,11 @@ function changeScene(): void {
             stage.removeAllChildren();
             currentScene = new scenes.GameWin();
             console.log("Starting GAMEWIN scene");
+            break;
+        case config.Scene.LOADING1:
+            stage.removeAllChildren();
+            currentScene = new scenes.LoadingScreen1();
+            console.log("Starting LOADING1 scene");
             break;
     }
 

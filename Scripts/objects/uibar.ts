@@ -57,7 +57,6 @@ module objects {
             // ui bar background
             this._uiBar = new createjs.Shape()
             this._uiBar.graphics.beginLinearGradientFill(["#ccc", "#444"], [0, 1], 0, 0, 0, 40)
-            // this._uiBar.graphics.beginLinearGradientFill(["#B26D02", "#FFB036"], [0, 1], 0, 0, 0, 120)
             this._uiBar.graphics.drawRect(0, 0, config.Screen.WIDTH, 40);
             this._uiBar.graphics.endFill();
             this._uiBar.graphics.setStrokeStyle(1);

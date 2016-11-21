@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: This file contains all assets and functionality associated with the menu itself.
- * @version 0.12.2 updated scenes/instructions.ts background roundrect
+ * @version 0.14.0 added scenes/loadingscreen.ts
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -112,7 +112,7 @@ var scenes;
          */
         Menu.prototype._playgameBtnClick = function (event) {
             // Change global scene variable to GAME. Call global changeScene() function
-            scene = config.Scene.LEVEL1;
+            scene = config.Scene.LOADING1;
             changeScene();
         };
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++

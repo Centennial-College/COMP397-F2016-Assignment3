@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: November 20, 2016
  * @description: This file is used to store globally accessible values and states for the game.
- * @version 0.13.0 added scenes/gamewin.ts
+ * @version 0.14.0 added scenes/loadingscreen.ts
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -17,6 +17,8 @@ module config {
         public static GAMEOVER: number = 3;
         public static INSTRUCTIONS: number = 4;
         public static GAMEWIN: number = 5;
+        public static LOADING1: number = 6;
+        public static LOADING2: number = 7;
     }
 
     export class Screen {

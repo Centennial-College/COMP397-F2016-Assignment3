@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: GameOver scene is used to display game over message and redirect the player to menu or level 1 again
- * @version 0.12.2 updated scenes/instructions.ts background roundrect 
+ * @version 0.14.0 added scenes/loadingscreen.ts 
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -118,7 +118,7 @@ module scenes {
          */
         private _playAgainBtnClick(event: createjs.MouseEvent): void {
             // Change global scene variable to LEVEL1. Call global changeScene() function
-            scene = config.Scene.LEVEL1;
+            scene = config.Scene.LOADING1;
             changeScene();
         }
 
