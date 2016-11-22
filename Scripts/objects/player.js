@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: This is the Player object used in the game
- * @version 1.1.0 added combo system; refactored scoring system
+ * @version 1.1.1 fixed combo-based scoring system calculations
  */
 var objects;
 (function (objects) {
@@ -125,14 +125,14 @@ var objects;
                     switch (other.name) {
                         // if the player collides with an island
                         case "island":
+                            // increase game combo
+                            gameCombo++;
                             // increase score
                             // business mission to deliver express packages
                             // therefore more points awarded when more time remaining and less packages left to deliver
-                            gameScore += (gameCombo * gameTime * gameLevel / gameParcelsRemaining);
+                            gameScore += ((gameCombo * gameTime * gameLevel) / gameParcelsRemaining);
                             // decrease # remaining packages to deliver
                             gameParcelsRemaining--;
-                            // increase game combo
-                            gameCombo++;
                             // play collision Sound
                             createjs.Sound.play("goal");
                             return true;
