@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: Level1 scene extends from the abstract Game class and inherits all its behaviors and attributes
- * @version 1.0.0 initial release.
+ * @version 1.1.0 added combo system; refactored scoring system
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -42,6 +42,7 @@ var scenes;
             gameTime = 20;
             gameScore = 0;
             gameParcelsRemaining = 10;
+            gameCombo = 0;
             stage.addChild(this);
         };
         /**

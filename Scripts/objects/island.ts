@@ -4,12 +4,22 @@
  * @studentID 300867968
  * @date: Nov 14 2016
  * @description: This is the Island object used in the game 
- * @version 0.5.0 added objects/gameobject, objects/vector2 and objects/island classes
+ * @version 1.1.0 added combo system; refactored scoring system
  */
 module objects {
     export class Island extends objects.GameObject {
         // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++
         private _dy: number;
+        private _hasBeenTouched: boolean
+
+        // PROPERTIES
+        public get hasBeenTouched(): boolean {
+            return this._hasBeenTouched
+        }
+
+        public set hasBeenTouched(newValue: boolean) {
+            this._hasBeenTouched = newValue
+        }
 
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
@@ -35,6 +45,8 @@ module objects {
          */
         private _reset(): void {
             this.y = -this.height;
+
+            this.hasBeenTouched = false
 
             // get a random x location
             // return Math.floor(Math.random() * (max - min + 1)) + min;

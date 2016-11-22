@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @studentID 300867968
  * @date: Nov 14 2016
  * @description: This is the Island object used in the game
- * @version 0.5.0 added objects/gameobject, objects/vector2 and objects/island classes
+ * @version 1.1.0 added combo system; refactored scoring system
  */
 var objects;
 (function (objects) {
@@ -26,6 +26,17 @@ var objects;
             _super.call(this, textureAtlas, imageString);
             this.start();
         }
+        Object.defineProperty(Island.prototype, "hasBeenTouched", {
+            // PROPERTIES
+            get: function () {
+                return this._hasBeenTouched;
+            },
+            set: function (newValue) {
+                this._hasBeenTouched = newValue;
+            },
+            enumerable: true,
+            configurable: true
+        });
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++
         /**
          * Resets the object outside of the viewport
@@ -37,6 +48,7 @@ var objects;
          */
         Island.prototype._reset = function () {
             this.y = -this.height;
+            this.hasBeenTouched = false;
             // get a random x location
             // return Math.floor(Math.random() * (max - min + 1)) + min;
             // Returns a random integer between min (inclusive) and max (inclusive)

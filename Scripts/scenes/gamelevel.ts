@@ -4,7 +4,7 @@
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: GameLevel scene that contains all assets and functionality associated with the game itself
- * @version 0.11.1 added goal sound, yay sound and gameover sounds
+ * @version 1.1.0 added combo system; refactored scoring system 
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -18,6 +18,7 @@ module scenes {
         protected _player: objects.Player
         protected _gameOver: boolean
         protected _bgMusic: createjs.AbstractSoundInstance
+        private _comboLabel: objects.Label
 
         // top UI bar
         protected _uiBar: objects.UIBar
@@ -79,13 +80,86 @@ module scenes {
                 this._gameOver = true
             }
 
+            console.log('has been touched ' + this._island.hasBeenTouched);
+
+
             // check for collisions
-            this._player.checkCollision(this._island)
+            if (this._player.checkCollision(this._island)) {
+
+                // if island has not been touched, then combo restarts
+                this._island.hasBeenTouched = true
+
+                // generate combo text and let fade away
+                this.addChild(this._comboLabel = new objects.Label("Combo x " + gameCombo, "20px custfont", "#fff", this._player.x, this._player.y))
+                // this.addChild(this._comboLabel = new objects.Label("Combo x " + gameCombo, "20px custfont", "#" + this.generateRandomColor(), this._player.x, this._player.y))
+                // this._comboLabel.shadow = new createjs.Shadow("#000", 2, 2, 2)
+                this._comboLabel.shadow = new createjs.Shadow("#" + this.generateRandomColor(), 0, 0, 2)
+
+                let xd: string = "#" + this.generateRandomColor()
+
+                console.log(xd);
+
+
+                createjs.Tween.get(this._comboLabel)
+                    .to({ alpha: 0, y: this._comboLabel.y - 100 }, 1000)
+                    .call(function () {
+                        stage.removeChild(this._comboLabel);
+                    });
+                console.log('collision at ' + createjs.Ticker.getTime());
+
+            }
+            // resets combo to 0 if missed an island 
+            else if (this._island.y >= this._player.y + this._player.halfHeight &&
+                !this._island.hasBeenTouched) {
+                gameCombo = 0
+            }
 
         }
 
+        /**
+         * This method randomly generates a color in hexadecimal format
+         * 
+         * @returns {string}
+         * 
+         * @memberOf GameLevel
+         */
+        public generateRandomColor(): string {
+            let color: string = "";
+            for (let i: number = 0; i < 6; i++) {
+                color += this._generateHexadecimalDigit()
+            }
 
+            return color;
+        }
         // PRIVATE FUNCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++
-
+        /**
+         * This method randomly generates a hexadecimal digit and returns it to the calling method
+         * 
+         * @private
+         * @returns {string}
+         * 
+         * @memberOf GameLevel
+         */
+        private _generateHexadecimalDigit(): string {
+            let ranNum: number;
+            ranNum = Math.floor(Math.random() * 16)
+            if (ranNum < 10)
+                return ranNum.toString()
+            else
+                switch (ranNum) {
+                    case 10:
+                        return 'A'
+                    case 11:
+                        return 'B'
+                    case 12:
+                        return 'C'
+                    case 13:
+                        return 'D'
+                    case 14:
+                        return 'E'
+                    case 15:
+                        return 'F'
+                }
+        }
     }
 }

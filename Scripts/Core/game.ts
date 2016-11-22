@@ -2,9 +2,9 @@
  * @file game.ts
  * @author Kevin Ma
  * @studentID 300867968
- * @date: Nov 20 2016
+ * @date: Nov 21 2016
  * @description: This file is the entry point for the game.
- * @version 1.0.0 initial release. 
+ * @version 1.1.0 added combo system; refactored scoring system 
  */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -26,6 +26,7 @@ let gameLevel: number
 let gameTime: number
 let gameScore: number
 let gameParcelsRemaining: number
+let gameCombo: number
 
 // declare textureAtlas
 let textureAtlas: createjs.SpriteSheet

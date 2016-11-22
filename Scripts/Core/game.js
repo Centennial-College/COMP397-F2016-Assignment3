@@ -2,9 +2,9 @@
  * @file game.ts
  * @author Kevin Ma
  * @studentID 300867968
- * @date: Nov 20 2016
+ * @date: Nov 21 2016
  * @description: This file is the entry point for the game.
- * @version 1.0.0 initial release.
+ * @version 1.1.0 added combo system; refactored scoring system
  */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /// <reference path = "_reference.ts" />
@@ -20,6 +20,7 @@ var gameLevel;
 var gameTime;
 var gameScore;
 var gameParcelsRemaining;
+var gameCombo;
 // declare textureAtlas
 var textureAtlas;
 // Preload Assets required

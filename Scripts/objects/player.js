@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @studentID 300867968
  * @date: Nov 20 2016
  * @description: This is the Player object used in the game
- * @version 0.12.3 fixed all game scene paths
+ * @version 1.1.0 added combo system; refactored scoring system
  */
 var objects;
 (function (objects) {
@@ -82,7 +82,8 @@ var objects;
                 if (Math.abs(_this._newPosition.x - _this.x) > _this.halfWidth)
                     _this._dx = _this._newPosition.x > _this.x ? 5 : -5;
             });
-            // only move the plane if the plane's position differs from the mouse position
+            // ensures that the plane only moves to the cursor's position and doesnt keep
+            // moving beyond it
             if (this._dx > 0 && this.x > this._newPosition.x ||
                 this._dx < 0 && this.x < this._newPosition.x) {
                 this._dx = 0;
@@ -127,12 +128,14 @@ var objects;
                             // increase score
                             // business mission to deliver express packages
                             // therefore more points awarded when more time remaining and less packages left to deliver
-                            gameScore += (gameTime * gameLevel / gameParcelsRemaining);
+                            gameScore += (gameCombo * gameTime * gameLevel / gameParcelsRemaining);
                             // decrease # remaining packages to deliver
                             gameParcelsRemaining--;
+                            // increase game combo
+                            gameCombo++;
                             // play collision Sound
                             createjs.Sound.play("goal");
-                            break;
+                            return true;
                         case "cloud":
                             if (!this._untouchable) {
                                 createjs.Sound.play("thunder");
@@ -141,12 +144,13 @@ var objects;
                                 this._untouchableStartTime = gameTime;
                                 console.log('colliding with cloud');
                             }
-                            break;
+                            return true;
                     }
                 }
             }
             else {
                 other.isColliding = false;
+                return false;
             }
         };
         return Player;
