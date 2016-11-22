@@ -7,4 +7,4 @@ They provide training for you and through multiple levels you must prove your wo
 The company's business mission is to provide fast, accurate, and reliable deliveries to their customers. 
 As such, score will be awarded to employees (or potential employees) based on less time spent making deliveries.
 
-gameScore += gameTime * gameLevel / gameParcelsRemaining
+gameScore += (gameCombo * gameTime * gameLevel) / gameParcelsRemaining
